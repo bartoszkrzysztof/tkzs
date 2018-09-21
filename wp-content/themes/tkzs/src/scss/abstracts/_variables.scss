@@ -1,0 +1,26 @@
+//fonts
+$font-regular: 'Lato', sans-serif;
+$font-display: 'Merriweather', serif;
+
+//colors
+$color-accent: #a2cf2a;
+
+$color-font: #272727;
+$color-font-75: #747474;
+$color-font-50: #a7a9ad;
+$color-font-25: #bec1c5;
+
+$color-background: #f1f4fa;
+$color-background-darken: #f0f3f9;
+// $color-background-darken: #e9ecf2;
+
+$color-gradient-start: #77c043;
+$color-gradient-end: #a2cf2a;
+
+$color-border: #f1f4fa;
+
+//gradients 
+$gradient-main: linear-gradient(to right, $color-gradient-start 0%,$color-gradient-end 100%);
+
+//path
+$assets: '../static/img/'

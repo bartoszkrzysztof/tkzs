@@ -1,0 +1,54 @@
+{
+    "autoprefixer": ["> 1%", "last 8 versions", "Firefox ESR", "IE 9"],
+    "browserSync": {
+        "open": false,
+        "url": "http://localhost/tkzs/site/" 
+    },
+    "jsQueue": [
+        "wp-content/themes/tkzs/src/js/_vendors.js",
+        "wp-content/themes/tkzs/src/js/app/*.js",
+        "wp-content/themes/tkzs/src/js/**/!(app)*.js",
+        "wp-content/themes/tkzs/src/js/app.js"
+    ],
+    "paths": {
+        "base": {
+            "src": "wp-content/themes/tkzs/src",
+            "dest": "wp-content/themes/tkzs/dist"
+        },
+        "iconfont": {
+            "src": "/static/iconfont",
+            "dest": "/scss/abstracts"
+        },
+        "images": {
+            "src": "/static/img",
+            "dest": "/static/img"
+        },
+        "scripts": {
+            "src": "/js",
+            "dest": "/js"
+        },
+        "static": {
+            "src": "/static",
+            "dest": "/static"
+        },
+        "styles": {
+            "src": "/scss",
+            "dest": "/css",
+            "main": "/scss/main.scss"
+        },
+        "vendors" : {
+            "scripts": [
+                "node_modules/jquery/dist/jquery.min.js",
+                "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+                "node_modules/slick-carousel/slick/slick.min.js",
+                "node_modules/aos/dist/aos.js"
+            ],
+            "styles": {
+                "css": [
+                ],
+                "scss": [
+                ]
+            }
+        }
+    }
+}

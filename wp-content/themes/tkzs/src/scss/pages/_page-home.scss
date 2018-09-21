@@ -1,0 +1,28 @@
+.home-bike-section {
+    position: absolute;
+    top: 50%;
+    left: 32%;
+    width: 80%;
+    max-width: 800px;
+    height: auto;  
+    transform: translate(0, -50%);
+}
+
+.section-home-photos {
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 65%, $color-background 65%,$color-background 100%)
+}
+
+.section-home-about {
+    padding-top: 50px;
+    padding-bottom: 400px;
+    position: relative;
+
+    &__parallax-item1 {
+        position: absolute;
+        top: 300px;
+    }
+    &__parallax-item2 {
+        position: absolute;
+        top: 400px;
+    }
+}

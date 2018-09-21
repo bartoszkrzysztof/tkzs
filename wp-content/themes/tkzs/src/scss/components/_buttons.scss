@@ -1,0 +1,67 @@
+.button {
+    @extend .text--label;
+    color: $color-font;
+    background: transparent;
+    font-weight: 700;
+    display: inline-block;
+    padding: 0 20px;
+    border: 1px solid $color-accent;
+    height: 41px;
+    line-height: normal;
+    line-height: 40px;
+    border-radius: 21px;
+    position: relative;
+    transition: background .25s ease-out, color .15s ease-out;
+    cursor: pointer;
+
+    &:hover {
+        background: $color-accent;
+        color: #FFF;
+        text-decoration: none;
+    }
+
+    &--noborder {
+        border: 0;
+        line-height: 42px;
+    }
+
+    &--icon {
+        padding-right: 40px;
+        
+        &:after {
+            position: absolute;
+            font-size: 12px;
+            top: 50%;
+            right: 15px;
+            transform: translate(0, -50%);
+        }
+    }
+
+    &--arrow {
+        padding-right: 40px;
+
+        @include icon(arrow-right, after);
+        &:after {
+            position: absolute;
+            font-size: 12px;
+            top: 50%;
+            right: 15px;
+            transform: translate(0, -50%);
+        }
+    }
+
+    &--shadow {
+        @extend %box-shadow;
+        background: #FFF;
+    }
+
+    &--full {
+        background: $gradient-main;
+        color: #FFF;
+
+        &:hover {
+            background: #FFF;
+            color: $color-font;
+        }
+    }
+}

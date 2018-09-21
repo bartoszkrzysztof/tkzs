@@ -1,0 +1,10 @@
+wp-admin
+wp-includes
+node_modules
+.htaccess
+/*.php
+license.txt
+readme.html
+web.config
+wp-snapshots/*
+wp-content/themes/bike-cafe/dist

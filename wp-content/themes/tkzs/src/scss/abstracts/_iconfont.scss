@@ -1,0 +1,177 @@
+@font-face {
+	font-family: "iconfont";
+	src: url('../static/fonts/iconfont/iconfont.eot');
+	src: url('../static/fonts/iconfont/iconfont.eot?#iefix') format('eot'),
+		url('../static/fonts/iconfont/iconfont.woff2') format('woff2'),
+		url('../static/fonts/iconfont/iconfont.woff') format('woff'),
+		url('../static/fonts/iconfont/iconfont.ttf') format('truetype'),
+		url('../static/fonts/iconfont/iconfont.svg#iconfont') format('svg');
+}
+
+@mixin icon-styles {
+	font-family: "iconfont";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	// speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+	text-decoration: none;
+	text-transform: none;
+}
+
+%icon {
+	@include icon-styles;
+}
+
+@function icon-char($filename) {
+	$char: "";
+
+	@if $filename == angel-down {
+		$char: "\E001";
+	}
+	@if $filename == angel-left {
+		$char: "\E002";
+	}
+	@if $filename == angel-right {
+		$char: "\E003";
+	}
+	@if $filename == angel-up {
+		$char: "\E004";
+	}
+	@if $filename == arrow-down {
+		$char: "\E005";
+	}
+	@if $filename == arrow-left {
+		$char: "\E006";
+	}
+	@if $filename == arrow-right {
+		$char: "\E007";
+	}
+	@if $filename == arrow-up {
+		$char: "\E008";
+	}
+	@if $filename == book {
+		$char: "\E009";
+	}
+	@if $filename == cart {
+		$char: "\E00A";
+	}
+	@if $filename == chart {
+		$char: "\E00B";
+	}
+	@if $filename == download {
+		$char: "\E00C";
+	}
+	@if $filename == facebook {
+		$char: "\E00D";
+	}
+	@if $filename == headphones {
+		$char: "\E00E";
+	}
+	@if $filename == location {
+		$char: "\E00F";
+	}
+	@if $filename == messenger {
+		$char: "\E010";
+	}
+	@if $filename == phone {
+		$char: "\E011";
+	}
+	@if $filename == search {
+		$char: "\E012";
+	}
+	@if $filename == target {
+		$char: "\E013";
+	}
+	@if $filename == twitter {
+		$char: "\E014";
+	}
+	@if $filename == user {
+		$char: "\E015";
+	}
+	@if $filename == vimeo {
+		$char: "\E016";
+	}
+
+	@return $char;
+}
+
+@mixin icon($filename, $insert: before, $extend: true) {
+	&:#{$insert} {
+		@if $extend {
+			@extend %icon;
+		} @else {
+			@include icon-styles;
+		}
+		content: icon-char($filename);
+	}
+}
+
+.icon-angel-down {
+	@include icon(angel-down);
+}
+.icon-angel-left {
+	@include icon(angel-left);
+}
+.icon-angel-right {
+	@include icon(angel-right);
+}
+.icon-angel-up {
+	@include icon(angel-up);
+}
+.icon-arrow-down {
+	@include icon(arrow-down);
+}
+.icon-arrow-left {
+	@include icon(arrow-left);
+}
+.icon-arrow-right {
+	@include icon(arrow-right);
+}
+.icon-arrow-up {
+	@include icon(arrow-up);
+}
+.icon-book {
+	@include icon(book);
+}
+.icon-cart {
+	@include icon(cart);
+}
+.icon-chart {
+	@include icon(chart);
+}
+.icon-download {
+	@include icon(download);
+}
+.icon-facebook {
+	@include icon(facebook);
+}
+.icon-headphones {
+	@include icon(headphones);
+}
+.icon-location {
+	@include icon(location);
+}
+.icon-messenger {
+	@include icon(messenger);
+}
+.icon-phone {
+	@include icon(phone);
+}
+.icon-search {
+	@include icon(search);
+}
+.icon-target {
+	@include icon(target);
+}
+.icon-twitter {
+	@include icon(twitter);
+}
+.icon-user {
+	@include icon(user);
+}
+.icon-vimeo {
+	@include icon(vimeo);
+}
+
