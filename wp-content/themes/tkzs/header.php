@@ -16,44 +16,5 @@
 
 <body <?php body_class()?> >
 
-<header class="site-header" id="mainHeader">
-    <div class="container">
-        <div class="row align-items-center header-menu" id="navHeader">
-            <div class="col">
-                <?php 
-                    $headerMenuArgs = array(
-                        'theme_location' => 'header_menu_left',
-                        'walker' => new Mda_Menu_Walker,
-                        'container'=>false,
-                        'fallback_cb'=>false,
-                        'menu_class' => 'header-menu__nav',
-                        'menu_item_classes' => array('header-menu__item'),
-                        'menu_link_classes' => array('header-menu__link')
-                    );
-                    wp_nav_menu($headerMenuArgs);
-                ?>
-            </div>
-            <div class="col-auto header-menu__logo-container">
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php _e('Back to homepage', 'bikecafe'); ?>">
-                    <img src="<?php echo get_template_directory_uri(); ?>/dist/static/img/logo-main.svg" alt="Bike Cafe" class="header-menu__logo">
-                </a>
-            </div>
-            <div class="col">
-                <?php 
-                    $headerMenuArgs = array(
-                        'theme_location' => 'header_menu_right',
-                        'walker' => new Mda_Menu_Walker,
-                        'container'=>false,
-                        'fallback_cb'=>false,
-                        'menu_class' => 'header-menu__nav',
-                        'menu_item_classes' => array('header-menu__item'),
-                        'menu_link_classes' => array('header-menu__link')
-                    );
-                    wp_nav_menu($headerMenuArgs);
-                ?>
-            </div>
-        </div>
-    </div>
-</header>
-<main class="content">
+
 

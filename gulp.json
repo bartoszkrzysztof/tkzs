@@ -2,7 +2,7 @@
     "autoprefixer": ["> 1%", "last 8 versions", "Firefox ESR", "IE 9"],
     "browserSync": {
         "open": false,
-        "url": "http://localhost/tkzs/site/" 
+        "url": "http://localhost/tkzs/" 
     },
     "jsQueue": [
         "wp-content/themes/tkzs/src/js/_vendors.js",
