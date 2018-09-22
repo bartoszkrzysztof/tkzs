@@ -17,7 +17,7 @@ add_action('wp_before_admin_bar_render', 'wpb_custom_logo');
 // Zmiana stopki
 function remove_footer_admin ()
 {
-    echo 'Stworzono przez <a href="https://mda.pl" target="_blank">mda.pl</a>, korzystając z <a href="http://www.wordpress.org" target="_blank">WordPress</a>.</p>';
+    echo 'Stworzono przez <a href="http://vespa-design.pl/" target="_blank">Vespa - studio graficzne</a>, korzystając z <a href="http://www.wordpress.org" target="_blank">WordPress</a>.</p>';
 }
 add_filter('admin_footer_text', 'remove_footer_admin');
 
@@ -30,7 +30,7 @@ global $wp_meta_boxes;
 }
 function custom_dashboard_help()
 {
-    echo '<p>Kontakt z deweloperem: <a href="mailto:biuro@gmail.com">biuro@mda.pl</a>.</p><p>Prosimy samodzielnie nie aktualizować Wordpressa oraz zainstalowanych wtyczek.</p>';
+    echo '<p>Kontakt: <a href="mailto:info@gmail.com">info@vespa-design.pl</a>.</p>';
 }
 
 // Wyłączenie Welcome Panel w adminie
@@ -105,7 +105,7 @@ function wpse_73561_remove_all_dashboard_meta_boxes()
 function revcon_change_post_label() {
     global $menu;
     global $submenu;
-    $menu[5][0] = 'Produkty';
+    $menu[5][0] = 'Aktualności';
     // $submenu['edit.php'][5][0] = 'Blog';
     // $submenu['edit.php'][10][0] = 'Add News';
     // $submenu['edit.php'][16][0] = 'News Tags';

@@ -15,7 +15,10 @@ function reorder_admin_menu( $__return_true ) {
          'index.php', // Dashboard
          'edit.php?post_type=page', // Pages
          'edit.php', // Posts
-         'edit.php?post_type=career', // Custom post type
+         'edit.php?post_type=galeries', // Custom post type
+         'edit.php?post_type=initiatives', // Custom post type
+         'edit.php?post_type=events', // Custom post type
+         'edit.php?post_type=publications', // Custom post type
          'separator1', // --Space--
          'upload.php', // Media
          'edit-comments.php', // Comments

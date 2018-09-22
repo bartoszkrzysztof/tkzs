@@ -1,0 +1,16 @@
+body {
+   background: #FFF;
+   color: $color-font;
+   font-family: 'Roboto', sans-serif;
+}
+a {
+   color: inherit;
+   opacity: 1;
+   transition: opacity .15s ease-out;
+
+   &:hover {
+      opacity: .8;
+      color: inherit;
+      text-decoration: none;
+   }
+}

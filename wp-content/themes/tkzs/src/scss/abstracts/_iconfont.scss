@@ -39,60 +39,6 @@
 	@if $filename == angel-up {
 		$char: "\E004";
 	}
-	@if $filename == arrow-down {
-		$char: "\E005";
-	}
-	@if $filename == arrow-left {
-		$char: "\E006";
-	}
-	@if $filename == arrow-right {
-		$char: "\E007";
-	}
-	@if $filename == arrow-up {
-		$char: "\E008";
-	}
-	@if $filename == book {
-		$char: "\E009";
-	}
-	@if $filename == cart {
-		$char: "\E00A";
-	}
-	@if $filename == chart {
-		$char: "\E00B";
-	}
-	@if $filename == download {
-		$char: "\E00C";
-	}
-	@if $filename == facebook {
-		$char: "\E00D";
-	}
-	@if $filename == headphones {
-		$char: "\E00E";
-	}
-	@if $filename == location {
-		$char: "\E00F";
-	}
-	@if $filename == messenger {
-		$char: "\E010";
-	}
-	@if $filename == phone {
-		$char: "\E011";
-	}
-	@if $filename == search {
-		$char: "\E012";
-	}
-	@if $filename == target {
-		$char: "\E013";
-	}
-	@if $filename == twitter {
-		$char: "\E014";
-	}
-	@if $filename == user {
-		$char: "\E015";
-	}
-	@if $filename == vimeo {
-		$char: "\E016";
-	}
 
 	@return $char;
 }
@@ -119,59 +65,5 @@
 }
 .icon-angel-up {
 	@include icon(angel-up);
-}
-.icon-arrow-down {
-	@include icon(arrow-down);
-}
-.icon-arrow-left {
-	@include icon(arrow-left);
-}
-.icon-arrow-right {
-	@include icon(arrow-right);
-}
-.icon-arrow-up {
-	@include icon(arrow-up);
-}
-.icon-book {
-	@include icon(book);
-}
-.icon-cart {
-	@include icon(cart);
-}
-.icon-chart {
-	@include icon(chart);
-}
-.icon-download {
-	@include icon(download);
-}
-.icon-facebook {
-	@include icon(facebook);
-}
-.icon-headphones {
-	@include icon(headphones);
-}
-.icon-location {
-	@include icon(location);
-}
-.icon-messenger {
-	@include icon(messenger);
-}
-.icon-phone {
-	@include icon(phone);
-}
-.icon-search {
-	@include icon(search);
-}
-.icon-target {
-	@include icon(target);
-}
-.icon-twitter {
-	@include icon(twitter);
-}
-.icon-user {
-	@include icon(user);
-}
-.icon-vimeo {
-	@include icon(vimeo);
 }
 

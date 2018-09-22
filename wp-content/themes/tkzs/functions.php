@@ -32,8 +32,7 @@ function mda_register_menu()
     // menu_handle - kotwica, po której odwołujemy się w motywie do danego menu
     // Menu name - nazwa pozycji menu, która wyświetli się w panelu admina
     register_nav_menus([
-        'header_menu_left' => __('Site-header menu left'),
-        'header_menu_right' => __('Site-header menu right'),
+        'header_menu' => __('Site-header menu'),
         'footer_menu' => __('Site-footer menu')
     ]);
 }
@@ -97,7 +96,7 @@ add_action('wp_enqueue_scripts', function(){
     // Rejestrujemy skrypty
     $manifest_js = (array) json_decode(file_get_contents($_base_url . '/dist/js/rev-manifest.json'), true);
     // wp_register_script('gmaps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD2agPj-BZEvjR3hXqy1Vy6ur7huFplx0Q', array(), null, true);
-    wp_enqueue_script('gmaps');
+    // wp_enqueue_script('gmaps');
     wp_register_script('main_scripts', $_base_url . '/dist/js/' . $manifest_js['bundle.js'], array(), null, true);
     wp_enqueue_script('main_scripts');
     

@@ -1,0 +1,56 @@
+.headline {
+   font-weight: 300;
+   line-height: 1.19;
+   margin: 0;
+   padding: 0;
+
+   &--300 {font-weight: 300;}
+   &--400 {font-weight: 400;}
+   &--500 {font-weight: 500;}
+   &--700 {font-weight: 700;}
+
+   &--main {
+      font-size: 52px;
+   }
+
+   &--card {
+      font-size: 32px;
+
+      &-small {
+         font-size: 20px;
+         font-weight: 500;
+      }
+   }
+}
+
+.text {
+   font-weight: 400;
+   color: $color-font-text-80;
+   line-height: 1.563;
+   margin: 0;
+   padding: 0;
+
+   &--300 {font-weight: 300;}
+   &--400 {font-weight: 400;}
+   &--500 {font-weight: 500;}
+   &--700 {font-weight: 700;}
+
+   &--reset-gaps {
+      p {
+         margin: 0;
+         padding: 0;
+      }
+   }
+
+   &--light {
+      color: $color-font-text-50;
+   }
+
+   &--smaller {
+      font-size: 14px;
+   }
+
+   &--small {
+      font-size: 12px;
+   }
+}
