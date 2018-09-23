@@ -1,0 +1,236 @@
+.slider-home {
+   max-width: 1440px;
+   margin: 0 auto;
+
+   &__slide {
+      // height: 700px;
+      text-align: center;
+      overflow-x: hidden;
+
+      img {
+         margin: 0 auto;
+         width: 100%;
+         height: auto;
+      }
+   }
+}
+
+.home-grid {
+   $root: &;
+   margin-top: 80px;
+
+   &__row {
+      @include media-breakpoint-down(xl) {
+         max-width: 610px;
+         margin-left: auto;
+         margin-right: auto;
+      }
+
+      @include media-breakpoint-down(sm) {
+         max-width: 100%;
+      }
+   }
+
+   &__box {
+      margin-bottom: 30px;
+      position: relative;
+      background-color: $color-accent-1;
+      border-radius: 6px;
+
+      &:after {
+         content: '';
+         display: block;
+         width: 100%;
+         padding-top: 100%;
+
+         @include media-breakpoint-down(sm) {
+            display: none;
+         }
+      }
+
+      &--color2 {
+         background-color: $color-accent-2;
+      }
+
+      &--color3 {
+         background-color: $color-accent-3;
+      }
+
+      &--color4 {
+         background-color: $color-accent-4;
+      }
+
+      &--image {
+         background-position: center;
+         background-repeat: no-repeat;
+         background-size: cover;
+         background-color: rgba(#000, .5);
+
+         &:before {
+            position: absolute;
+            z-index: 1;
+            content: '';
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(#000, .5);
+         }
+      }
+   }
+   &__box-content {
+      position: absolute;
+      padding: 25px 30px;
+      z-index: 2;
+
+      @include media-breakpoint-down(sm) {
+         position: relative;
+      }
+
+      &--image {
+         top: 50%;
+         margin: auto;
+         text-align: center;
+         transform: translate(0, -50%);
+
+         @include media-breakpoint-down(sm) {
+            text-align: left;
+            top: auto;
+            transform: translate(0, 0);
+         }
+      }
+   }
+}
+
+.rect-box {
+   $root: &;
+
+   &__date {
+      font-size: 12px;
+      margin-bottom: 5px;
+      color: $color-font-80;
+   }
+   &__headline {
+      line-height: 1.3;
+      height: 2.6em;
+      overflow: hidden;
+      margin-bottom: 20px;
+
+      @include media-breakpoint-down(sm) {
+         height: auto;
+      }
+
+      p {
+         margin: 0;
+         padding: 0;
+      }
+   }
+   &__text {
+      color: $color-font-80;
+      height: 4.68em;
+      margin-bottom: 20px;
+      
+      @include media-breakpoint-down(sm) {
+         height: auto;
+      }
+   }
+   &__link {
+      font-size: 16px;
+
+      &:after {
+         vertical-align: 0;
+      }
+   }
+
+   &--image {
+      color: #FFF;
+
+      #{$root}__date {
+         color: $color-accent-2;
+      }
+      #{$root}__headline {
+         height: auto;
+      }
+      #{$root}__text {
+         color: $color-accent-2;
+      }
+      #{$root}__link {
+         color: #FFF;
+      }
+   }
+}
+
+.home-about {
+   $root: &;
+   text-align: center;
+
+   &:nth-child(2) {
+      background-color: $color-background-light;
+   }
+
+   &:nth-child(odd) {
+      #{$root}__div-col-start {
+         order: 1;
+      }
+      #{$root}__div-col-end {
+         order: 2;
+      }
+   }
+
+   &:nth-child(even) {
+      #{$root}__div-col-start {
+         order: 2;
+         
+         @include media-breakpoint-down(sm) {
+            order: 1;
+         }
+      }
+      #{$root}__div-col-end {
+         order: 1;
+         
+         @include media-breakpoint-down(sm) {
+            order: 2;
+         }
+      }
+   }
+
+   &__title {
+      margin-bottom: 20px!important;
+   }
+
+   &__text {
+      margin-bottom: 20px;
+   }
+
+   &__link {
+      font-size: 16px;
+
+      &:after {
+         vertical-align: 0;
+      }
+   }
+
+   &__icon {
+      max-width: 60px;
+      margin-bottom: 20px;
+   }
+
+   &__content {
+      padding: 100px 0;
+      
+      @include media-breakpoint-down(sm) {
+         padding: 50px 25px;
+      }
+   }
+
+   &__photo {
+      min-height: 550px;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      @include media-breakpoint-down(sm) {
+         min-height: 400px;
+      }
+   }
+}

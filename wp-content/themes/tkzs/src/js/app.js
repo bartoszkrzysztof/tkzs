@@ -31,9 +31,18 @@ jQuery(function($){
     /** 
      * match height
      */
-
     $('.equal-headline').matchHeight();
     $('.equal-text').matchHeight();
+
+    /**
+     * clamp.js
+     */
+    $('.clamp-text').each(function(index, element) {
+        // $clamp(element, { clamp: '3', useNativeClamp: false });
+        var ellipsis = new Ellipsis(element);
+        ellipsis.calc();
+        ellipsis.set();
+    });
 
     /** 
      * smooth scroll

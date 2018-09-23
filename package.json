@@ -34,6 +34,7 @@
   "dependencies": {
     "aos": "^2.2.0",
     "bootstrap": "^4.1.1",
+    "ftellipsis": "^0.2.3",
     "gulp-revise": "^2.0.0",
     "jquery": "^3.3.1",
     "jquery-match-height": "^0.7.2",

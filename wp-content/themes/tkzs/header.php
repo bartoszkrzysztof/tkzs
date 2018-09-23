@@ -16,12 +16,18 @@
 <body <?php body_class()?> >
 <div class="header">
     <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand ml-0 ml-lg-5" href="#">Navbar</a>
+        <a class="navbar-brand ml-0 ml-xl-3 ml-ds-5 ml-xxl-6" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="Powrót do strony głównej">
+            <img src="<?php echo get_template_directory_uri(); ?>/dist/static/img/logo.png" alt="Towarzystwo Kultury Ziemi Szamotulskiej" class="header__logo">
+            <div class="header__logo-title">
+                    Towarzystwo Kultury <br />
+                    Ziemi Szamotulskiej
+            </div>
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             menu
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="ml-auto mr-0 mr-lg-5">
+            <div class="ml-auto mr-0 mr-xl-3 mr-ds-5 mr-xxl-6">
                 <?php 
                     $headerMenuArgs = array(
                         'theme_location' => 'header_menu',

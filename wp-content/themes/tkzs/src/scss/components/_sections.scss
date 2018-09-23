@@ -67,3 +67,11 @@
       margin-bottom: 5px;
    }
 }
+
+.section {
+   padding: 100px 0;
+
+   &--background {
+      background: $color-background-light;
+   }
+}
