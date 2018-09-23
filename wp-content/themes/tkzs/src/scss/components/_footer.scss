@@ -1,0 +1,48 @@
+.footer {
+   background: $color-background-dark;
+   padding: 40px 0 25px 0;
+}
+
+.footer-menu {
+   margin-bottom: 30px;
+   position: relative;
+
+   &__nav {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+   }
+
+   &__item {
+      display: inline-block;
+      margin: 0 20px;
+   }
+
+   &__link {
+      color: #FFF;
+      font-weight: 500;
+
+      &:hover {
+         color: #FFF;
+         opacity: 0.5;
+      }
+   }
+}
+
+.footer-info {
+   color: $color-accent-2;
+   font-size: 11px;
+
+   p {
+      margin: 0;
+   }
+}
+
+.facebook {
+   position: absolute;
+   top: -12px;
+   right: 0;
+   color: #FFF;
+   font-size: 24px;
+   opacity: 0.4;
+}

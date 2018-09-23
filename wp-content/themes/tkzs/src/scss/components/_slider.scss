@@ -1,0 +1,28 @@
+.events-slider {
+   position: relative;
+
+   &__arrow {
+      position: absolute;
+      top: 50%;
+      z-index: 9;
+      font-size: 30px;
+      color: #FF544E;
+      opacity: 1;
+      transition: opacity .25s ease-out;
+      cursor: pointer;
+
+      &:hover {
+         opacity: .65;
+      }
+
+      &--prev {
+         left: 0;
+         transform: translate(-50px, -50%);
+      }
+
+      &--next {
+         right: 0;
+         transform: translate(50px, -50%);
+      }
+   }
+}

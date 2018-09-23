@@ -221,26 +221,33 @@ jQuery(function($){
 
     /** 
      * slider 
-    //  */
-    // var logoSlider = $('#homeLogoSlider');
+     */
+    var eventsSlider = $('#eventsSlider');
     // var logoItem = $('.slider-logo');
 
-    // //slick init
-    // logoSlider.slick({
-    //     arrows: false,
-    //     autoplay: true,
-    //     fade: true,
-    // })
-    // .on('beforeChange', function(event, slick, currentSlide){
-    //     logoItem.each(function() {
-    //         $(this).addClass('slider-logo--animate');
-    //     });
-    // })
-    // .on('afterChange', function(event, slick, currentSlide){
-    //     logoItem.each(function() {
-    //         $(this).removeClass('slider-logo--animate');
-    //     });
-    // });
+    //slick init
+    eventsSlider.slick({
+        arrows: true,
+        autoplay: true,
+        prevArrow: '<span class="events-slider__arrow events-slider__arrow--prev"><span class="icon-angel-left"></span></span>',
+        nextArrow: '<span class="events-slider__arrow events-slider__arrow--next"><span class="icon-angel-right"></span></span>',
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [
+            {
+              breakpoint: 1200,
+              settings: {
+                slidesToShow: 2,
+              }
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1,
+              }
+            },
+        ]
+    });
 
     
     /**

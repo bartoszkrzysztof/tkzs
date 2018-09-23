@@ -36,6 +36,10 @@
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
+
+      &--poster {
+         height: 490px;
+      }
    }
 
    &-header, &-footer {
@@ -73,5 +77,9 @@
 
    &--background {
       background: $color-background-light;
+   }
+
+   &__headline {
+      margin-bottom: 60px;
    }
 }

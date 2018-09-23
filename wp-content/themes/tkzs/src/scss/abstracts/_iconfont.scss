@@ -39,6 +39,9 @@
 	@if $filename == angel-up {
 		$char: "\E004";
 	}
+	@if $filename == facebook {
+		$char: "\E005";
+	}
 
 	@return $char;
 }
@@ -65,5 +68,8 @@
 }
 .icon-angel-up {
 	@include icon(angel-up);
+}
+.icon-facebook {
+	@include icon(facebook);
 }
 

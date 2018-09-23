@@ -10,7 +10,7 @@ add_action( 'init', function(){
 	$args = array(
 		'label'                 => __( 'Wydarzenia', 'theme' ),
 		'labels'                => $labels,
-        'supports'              => array( 'title', 'author', 'editor' ),
+        'supports'              => array( 'title', 'author', 'editor', 'excerpt', 'thumbnail' ),
         'rewrite'               => array('slug' => 'wydarzenie', 'with_front' => false),
 		'hierarchical'          => true,
 		'public'                => true,
