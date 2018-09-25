@@ -1,0 +1,28 @@
+.banner-page {
+   height: 300px;
+   position: relative;
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+
+   &__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(#000, .5);
+   }
+
+   &__title {
+      color: #FFF;
+      font-size: 52px;
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      font-weight: 300;
+      
+      transform: translate(-50%, -50%);
+   }
+}

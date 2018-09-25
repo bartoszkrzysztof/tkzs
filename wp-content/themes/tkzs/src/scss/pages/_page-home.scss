@@ -1,11 +1,14 @@
 .slider-home {
-   max-width: 1440px;
-   margin: 0 auto;
+   // max-width: 1440px;
+   // margin: 0 auto;
 
    &__slide {
-      // height: 700px;
+      height: 700px;
       text-align: center;
       overflow-x: hidden;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
 
       img {
          margin: 0 auto;
@@ -160,9 +163,17 @@
    }
 }
 
+.half-container {
+   max-width: $half-container;
+}
+
 .home-about {
    $root: &;
    text-align: center;
+
+   .half-container {
+      float: right;
+   }
 
    &:nth-child(2) {
       background-color: $color-background-light;
@@ -174,6 +185,9 @@
       }
       #{$root}__div-col-end {
          order: 2;
+      }
+      .half-container {
+         float: left;
       }
    }
 
