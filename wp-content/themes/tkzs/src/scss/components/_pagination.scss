@@ -1,0 +1,32 @@
+.pagination-nav {
+   list-style: none;
+   margin-bottom: 100px;
+
+   > li {
+      display: inline-block;
+      padding: 0 5px;
+      font-size: 12px;
+
+      > a {
+         display: inline-block;
+         width: 30px;
+         height: 30px;
+         border-radius: 6px;
+         border: 1px solid rgba($color-border, 0);
+         line-height: 30px;
+         color: $color-font-text-50;
+      }
+
+      &.active {
+         > a {
+            color: $color-font-text;
+            border: 1px solid $color-border;
+         }
+      }
+   }
+
+   &__arrows {
+      font-size: 10px!important;
+      padding: 0 10px!important;
+   }
+}

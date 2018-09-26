@@ -249,6 +249,30 @@ jQuery(function($){
         ]
     });
 
+    /** 
+     * slider 
+     */
+    var reviewSlider = '#reviewSlider';
+    var reviewSliderNav = '.review-slider-nav';
+    
+    //slick init
+    $(reviewSlider).slick({
+        arrows: true,
+        autoplay: true,
+        prevArrow: '<span class="events-slider__arrow events-slider__arrow--prev"><span class="icon-angel-left"></span></span>',
+        nextArrow: '<span class="events-slider__arrow events-slider__arrow--next"><span class="icon-angel-right"></span></span>',
+    })
+    .on('afterChange', function(event, slick, currentSlide) {
+        $(reviewSliderNav).each(function() {
+            $(this).removeClass('active');
+        })
+        $(reviewSliderNav + '[rel="' + currentSlide + '"]').addClass('active');
+    });
+    
+    $(reviewSliderNav).click(function() {
+        $(reviewSlider).slick('slickGoTo', $(this).attr('rel'));
+    })
+
     
     /**
      * parallax scroll

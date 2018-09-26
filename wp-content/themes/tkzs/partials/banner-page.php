@@ -23,3 +23,24 @@
       ?>
    </div>   
 </div>
+
+<div class="color-border">
+   <div class="color-border__item"></div>
+   <div class="color-border__item"></div>
+   <div class="color-border__item"></div>
+   <div class="color-border__item"></div>
+   <div class="color-border__item"></div>
+   <div class="color-border__item"></div>
+   <div class="color-border__item"></div>
+   <div class="color-border__item"></div>
+</div>
+
+<div class="breadcrumbs">
+   <div class="container">
+      <?php
+         if ( function_exists('yoast_breadcrumb') ) {
+            yoast_breadcrumb();
+         }
+      ?>
+   </div>
+</div>
