@@ -13,14 +13,16 @@
 <div class="banner-page" style="background-image: url(<?php echo $banner; ?>);">
    <div class="banner-page__overlay"></div>
    <div class="banner-page__title container text-center">
-      <?php
-         if ( is_home() && ! is_front_page() ) {
-            echo single_post_title();
-         }
-         else {
-            the_title();
-         }
-      ?>
+      <div class="container">
+         <?php
+            if ( is_home() && ! is_front_page() ) {
+               echo single_post_title();
+            }
+            else {
+               the_title();
+            }
+         ?>
+      </div>
    </div>   
 </div>
 

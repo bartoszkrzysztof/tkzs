@@ -1,6 +1,9 @@
+<?php
+   $thumb = get_the_post_thumbnail_url();
+?>
 <div class="card">
    <a href="<?php the_permalink(); ?>">
-      <div class="card-image"></div>
+      <div class="card-image" style="background-image: url(<?php echo $thumb; ?>);"></div>
    </a>
    <div class="card-header">
       <h1 class="headline headline--card equal-headline">

@@ -42,6 +42,9 @@
 	@if $filename == facebook {
 		$char: "\E005";
 	}
+	@if $filename == user {
+		$char: "\E006";
+	}
 
 	@return $char;
 }
@@ -71,5 +74,8 @@
 }
 .icon-facebook {
 	@include icon(facebook);
+}
+.icon-user {
+	@include icon(user);
 }
 

@@ -23,5 +23,6 @@ get_header(); ?>
   <?php numeric_posts_nav(); ?>
 </div>
 
+<?php echo get_template_part('partials/section', 'events'); ?>
 <?php echo get_template_part('partials/slider', 'page'); ?>
 <?php get_footer();?>
