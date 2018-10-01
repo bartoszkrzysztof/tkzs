@@ -6,6 +6,7 @@
     "browser-sync": "^2.23.6",
     "browsersync": "0.0.1-security",
     "del": "^2.2.2",
+    "ekko-lightbox": "^5.3.0",
     "fs": "0.0.1-security",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",

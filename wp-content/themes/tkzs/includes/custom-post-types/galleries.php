@@ -10,8 +10,8 @@ add_action( 'init', function(){
 	$args = array(
 		'label'                 => __( 'Galerie', 'theme' ),
 		'labels'                => $labels,
-        'supports'              => array( 'title', 'author', 'editor' ),
-        'rewrite'               => array('slug' => 'galeria', 'with_front' => false),
+        'supports'              => array( 'title', 'author', 'editor', 'thumbnail' ),
+        'rewrite'               => array('slug' => 'galerie', 'with_front' => false),
 		'hierarchical'          => true,
 		'public'                => true,
 		'show_ui'               => true,
@@ -21,12 +21,12 @@ add_action( 'init', function(){
 		'show_in_admin_bar'     => false,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
-		'has_archive'           => true,
+		'has_archive'           => 'galerie',
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
 	);
-	register_post_type( 'galeries', $args );
+	register_post_type( 'galleries', $args );
 
 }, 0 );
 

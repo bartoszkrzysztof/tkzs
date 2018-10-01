@@ -1,10 +1,13 @@
 <?php 
    if ( is_home() && ! is_front_page() ) {
       $acf_id = get_option( 'page_for_posts' );
-   }
-
-   if (get_field('page-banner', $acf_id)) {
       $banner = get_field('page-banner', $acf_id)['url'];
+   }
+   else if (is_archive()) {
+      $banner = get_archive_thumbnail_src('full');
+   }
+   else if (get_field('page-banner')) {
+      $banner = get_field('page-banner')['url'];
    }
    else {
       $banner = get_template_directory_uri().'/dist/static/img/banner.jpg';
@@ -17,6 +20,9 @@
          <?php
             if ( is_home() && ! is_front_page() ) {
                echo single_post_title();
+            }
+            else if (is_archive()) {
+               echo post_type_archive_title( '', false );
             }
             else {
                the_title();

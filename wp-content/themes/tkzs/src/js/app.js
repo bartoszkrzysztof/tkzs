@@ -144,6 +144,14 @@ jQuery(function($){
         $(reviewSlider).slick('slickGoTo', $(this).attr('rel'));
     })
 
+
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox({
+            alwaysShowClose: true,
+            showArrows: true
+        });
+    });
     
     /**
      * parallax scroll

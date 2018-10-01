@@ -23,6 +23,675 @@ display:n};a[s.property]="",e.css(a),e.outerHeight(!1)>i&&(i=e.outerHeight(!1)),
 this},r._applyDataApi=function(){var e={};t("[data-match-height], [data-mh]").each(function(){var o=t(this),n=o.attr("data-mh")||o.attr("data-match-height");n in e?e[n]=e[n].add(o):e[n]=o}),t.each(e,function(){this.matchHeight(!0)})};var s=function(e){r._beforeUpdate&&r._beforeUpdate(e,r._groups),t.each(r._groups,function(){r._apply(this.elements,this.options)}),r._afterUpdate&&r._afterUpdate(e,r._groups)};r._update=function(n,a){if(a&&"resize"===a.type){var i=t(window).width();if(i===e)return;e=i;
 }n?o===-1&&(o=setTimeout(function(){s(a),o=-1},r._throttle)):s(a)},t(r._applyDataApi);var h=t.fn.on?"on":"bind";t(window)[h]("load",function(t){r._update(!1,t)}),t(window)[h]("resize orientationchange",function(t){r._update(!0,t)})});
 (function(){"use strict";function t(t,e){t&&(this.el=t,this.container=e&&e.container,this.reRender=e&&e.reRender)}function e(e){e.style.display="none",t.r=e.offsetTop,e.style.display=""}function i(t,e){if(t)for(var i=e&&e.display,n=t.parentNode.children,l=a.call(n,t),o=l+1,s=n.length;s>o;o++)n[o].style.display=i}function n(t,e){var i=t.getClientRects(),n=0;return p(i,function(t){n+=l(t.height,e)}),n}function l(t,e){return Math.floor(t/e)}function o(){var t=document.createElement("test"),e={},i={Webkit:["WebkitColumnCount","WebkitColumnGap"],Moz:["MozColumnCount","MozColumnGap"],ms:["msColumnCount","msColumnGap"],"":["columnCount","columnGap"]};for(var n in i)i[n][0]in t.style&&(e.columnCount=i[n][0],e.columnGap=i[n][1],e[n.toLowerCase()]=!0);return e}function s(t){return parseInt(t[y.columnCount],10)||1}function h(t){return parseInt(t[y.columnGap],10)||0}function r(t){var e=parseInt(t.lineHeight,10);if(!e)throw Error(f[0]);return e}function u(t){return[t.offsetWidth,t.offsetHeight]}function p(t,e){for(var i=0,n=t.length;n>i&&!e(t[i]);i++);}var a=Array.prototype.indexOf,c=window.getComputedStyle,d="ellipsis-overflowing-child",m="ellipsis-set",f=["The ellipsis container must have line-height set on it"],y=o();t.prototype.calc=function(){if(!this.el)return this;var t=c(this.el),e=u(this.el);return this.columnHeight=e[1],this.columnCount=s(t),this.columnGap=h(t),this.columnWidth=e[0]/this.columnCount,this.lineHeight=r(t),this.deltaHeight=e[1]%this.lineHeight,this.linesPerColumn=Math.floor(this.columnHeight/this.lineHeight),this.totalLines=this.linesPerColumn*this.columnCount,!this.deltaHeight&&this.columnCount>1&&(this.el.style.height=this.columnHeight+"px"),this.child=this.getOverflowingChild(),this},t.prototype.set=function(){return this.el&&this.child?(this.clampChild(),i(this.child.el,{display:"none"}),this.markContainer(),this):this},t.prototype.unset=function(){return this.el&&this.child?(this.el.style.height="",this.unclampChild(this.child),i(this.child.el,{display:""}),this.unmarkContainer(),this.child=null,this):this},t.prototype.destroy=function(){return this.el=this.child=this.container=null,this},t.prototype.getOverflowingChild=function(){var t=this,e={},i=0;return p(this.el.children,function(n){var l,o,s,h=Math.floor(i/t.linesPerColumn)||0;return i+=l=t.getLineCount(n),i>=t.totalLines?(o=i-t.totalLines,s=l-o,e.el=n,e.clampedLines=s,e.clampedHeight=e.clampedLines*t.lineHeight,e.visibleColumnSpan=t.columnCount-h,e.gutterSpan=e.visibleColumnSpan-1,e.applyTopMargin=t.shouldApplyTopMargin(e),y.webkit&&e.clampedLines>1&&(e.clampedHeight+=e.gutterSpan*t.deltaHeight),e):void 0}),e},t.prototype.getLineCount=function(t){return t.offsetWidth>this.columnWidth?n(t,this.lineHeight):l(t.clientHeight,this.lineHeight)},t.prototype.markContainer=function(){this.container&&(this.container.classList.add(m),this.reRender&&e(this.container))},t.prototype.unmarkContainer=function(){this.container&&(this.container.classList.remove(m),this.reRender&&e(this.container))},t.prototype.shouldApplyTopMargin=function(t){var e=t.el;if(y.webkit&&1!==this.columnCount&&!(3>=this.deltaHeight)&&e.previousElementSibling)return 0===e.offsetTop||e.offsetTop===this.columnHeight},t.prototype.clampChild=function(){var t=this.child;t&&t.el&&(t.el.style.height=t.clampedHeight+"px",y.webkit&&(t.el.style.webkitLineClamp=t.clampedLines,t.el.style.display="-webkit-box",t.el.style.webkitBoxOrient="vertical"),this.shouldHideOverflow()&&(t.el.style.overflow="hidden"),t.applyTopMargin&&(t.el.style.marginTop="2em"),t.el.classList.add(d),y.webkit||(t.el.style.position="relative",t.helper=t.el.appendChild(this.helperElement())))},t.prototype.unclampChild=function(t){t&&t.el&&(t.el.style.display="",t.el.style.height="",t.el.style.webkitLineClamp="",t.el.style.webkitBoxOrient="",t.el.style.marginTop="",t.el.style.overflow="",t.el.classList.remove(d),t.helper&&t.helper.parentNode.removeChild(t.helper))},t.prototype.helperElement=function(){var t,e,i=document.createElement("span"),n=this.child.visibleColumnSpan-1;return i.className="ellipsis-helper",i.style.display="block",i.style.height=this.lineHeight+"px",i.style.width="5em",i.style.position="absolute",i.style.bottom=0,i.style.right=0,y.moz&&n&&(t=-(100*n),e=-(n*this.columnGap),i.style.right=t+"%",i.style.marginRight=e+"px",i.style.marginBottom=this.deltaHeight+"px"),i},t.prototype.shouldHideOverflow=function(){var t=this.columnCount>1;return this.columnHeight<this.lineHeight?!0:!t},"object"==typeof exports?(module.exports=function(e,i){return new t(e,i)},module.exports.Ellipsis=t):"function"==typeof define&&define.amd?define(function(){return t}):window.Ellipsis=t})();
+/*!
+ * Lightbox for Bootstrap by @ashleydw
+ * https://github.com/ashleydw/lightbox
+ *
+ * License: https://github.com/ashleydw/lightbox/blob/master/LICENSE
+ */
++function ($) {
+
+'use strict';
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+var Lightbox = (function ($) {
+
+	var NAME = 'ekkoLightbox';
+	var JQUERY_NO_CONFLICT = $.fn[NAME];
+
+	var Default = {
+		title: '',
+		footer: '',
+		maxWidth: 9999,
+		maxHeight: 9999,
+		showArrows: true, //display the left / right arrows or not
+		wrapping: true, //if true, gallery loops infinitely
+		type: null, //force the lightbox into image / youtube mode. if null, or not image|youtube|vimeo; detect it
+		alwaysShowClose: false, //always show the close button, even if there is no title
+		loadingMessage: '<div class="ekko-lightbox-loader"><div><div></div><div></div></div></div>', // http://tobiasahlin.com/spinkit/
+		leftArrow: '<span>&#10094;</span>',
+		rightArrow: '<span>&#10095;</span>',
+		strings: {
+			close: 'Close',
+			fail: 'Failed to load image:',
+			type: 'Could not detect remote target type. Force the type using data-type'
+		},
+		doc: document, // if in an iframe can specify top.document
+		onShow: function onShow() {},
+		onShown: function onShown() {},
+		onHide: function onHide() {},
+		onHidden: function onHidden() {},
+		onNavigate: function onNavigate() {},
+		onContentLoaded: function onContentLoaded() {}
+	};
+
+	var Lightbox = (function () {
+		_createClass(Lightbox, null, [{
+			key: 'Default',
+
+			/**
+       Class properties:
+   	 _$element: null -> the <a> element currently being displayed
+    _$modal: The bootstrap modal generated
+       _$modalDialog: The .modal-dialog
+       _$modalContent: The .modal-content
+       _$modalBody: The .modal-body
+       _$modalHeader: The .modal-header
+       _$modalFooter: The .modal-footer
+    _$lightboxContainerOne: Container of the first lightbox element
+    _$lightboxContainerTwo: Container of the second lightbox element
+    _$lightboxBody: First element in the container
+    _$modalArrows: The overlayed arrows container
+   	 _$galleryItems: Other <a>'s available for this gallery
+    _galleryName: Name of the current data('gallery') showing
+    _galleryIndex: The current index of the _$galleryItems being shown
+   	 _config: {} the options for the modal
+    _modalId: unique id for the current lightbox
+    _padding / _border: CSS properties for the modal container; these are used to calculate the available space for the content
+   	 */
+
+			get: function get() {
+				return Default;
+			}
+		}]);
+
+		function Lightbox($element, config) {
+			var _this = this;
+
+			_classCallCheck(this, Lightbox);
+
+			this._config = $.extend({}, Default, config);
+			this._$modalArrows = null;
+			this._galleryIndex = 0;
+			this._galleryName = null;
+			this._padding = null;
+			this._border = null;
+			this._titleIsShown = false;
+			this._footerIsShown = false;
+			this._wantedWidth = 0;
+			this._wantedHeight = 0;
+			this._touchstartX = 0;
+			this._touchendX = 0;
+
+			this._modalId = 'ekkoLightbox-' + Math.floor(Math.random() * 1000 + 1);
+			this._$element = $element instanceof jQuery ? $element : $($element);
+
+			this._isBootstrap3 = $.fn.modal.Constructor.VERSION[0] == 3;
+
+			var h4 = '<h4 class="modal-title">' + (this._config.title || "&nbsp;") + '</h4>';
+			var btn = '<button type="button" class="close" data-dismiss="modal" aria-label="' + this._config.strings.close + '"><span aria-hidden="true">&times;</span></button>';
+
+			var header = '<div class="modal-header' + (this._config.title || this._config.alwaysShowClose ? '' : ' hide') + '">' + (this._isBootstrap3 ? btn + h4 : h4 + btn) + '</div>';
+			var footer = '<div class="modal-footer' + (this._config.footer ? '' : ' hide') + '">' + (this._config.footer || "&nbsp;") + '</div>';
+			var body = '<div class="modal-body"><div class="ekko-lightbox-container"><div class="ekko-lightbox-item fade in show"></div><div class="ekko-lightbox-item fade"></div></div></div>';
+			var dialog = '<div class="modal-dialog" role="document"><div class="modal-content">' + header + body + footer + '</div></div>';
+			$(this._config.doc.body).append('<div id="' + this._modalId + '" class="ekko-lightbox modal fade" tabindex="-1" tabindex="-1" role="dialog" aria-hidden="true">' + dialog + '</div>');
+
+			this._$modal = $('#' + this._modalId, this._config.doc);
+			this._$modalDialog = this._$modal.find('.modal-dialog').first();
+			this._$modalContent = this._$modal.find('.modal-content').first();
+			this._$modalBody = this._$modal.find('.modal-body').first();
+			this._$modalHeader = this._$modal.find('.modal-header').first();
+			this._$modalFooter = this._$modal.find('.modal-footer').first();
+
+			this._$lightboxContainer = this._$modalBody.find('.ekko-lightbox-container').first();
+			this._$lightboxBodyOne = this._$lightboxContainer.find('> div:first-child').first();
+			this._$lightboxBodyTwo = this._$lightboxContainer.find('> div:last-child').first();
+
+			this._border = this._calculateBorders();
+			this._padding = this._calculatePadding();
+
+			this._galleryName = this._$element.data('gallery');
+			if (this._galleryName) {
+				this._$galleryItems = $(document.body).find('*[data-gallery="' + this._galleryName + '"]');
+				this._galleryIndex = this._$galleryItems.index(this._$element);
+				$(document).on('keydown.ekkoLightbox', this._navigationalBinder.bind(this));
+
+				// add the directional arrows to the modal
+				if (this._config.showArrows && this._$galleryItems.length > 1) {
+					this._$lightboxContainer.append('<div class="ekko-lightbox-nav-overlay"><a href="#">' + this._config.leftArrow + '</a><a href="#">' + this._config.rightArrow + '</a></div>');
+					this._$modalArrows = this._$lightboxContainer.find('div.ekko-lightbox-nav-overlay').first();
+					this._$lightboxContainer.on('click', 'a:first-child', function (event) {
+						event.preventDefault();
+						return _this.navigateLeft();
+					});
+					this._$lightboxContainer.on('click', 'a:last-child', function (event) {
+						event.preventDefault();
+						return _this.navigateRight();
+					});
+					this.updateNavigation();
+				}
+			}
+
+			this._$modal.on('show.bs.modal', this._config.onShow.bind(this)).on('shown.bs.modal', function () {
+				_this._toggleLoading(true);
+				_this._handle();
+				return _this._config.onShown.call(_this);
+			}).on('hide.bs.modal', this._config.onHide.bind(this)).on('hidden.bs.modal', function () {
+				if (_this._galleryName) {
+					$(document).off('keydown.ekkoLightbox');
+					$(window).off('resize.ekkoLightbox');
+				}
+				_this._$modal.remove();
+				return _this._config.onHidden.call(_this);
+			}).modal(this._config);
+
+			$(window).on('resize.ekkoLightbox', function () {
+				_this._resize(_this._wantedWidth, _this._wantedHeight);
+			});
+			this._$lightboxContainer.on('touchstart', function () {
+				_this._touchstartX = event.changedTouches[0].screenX;
+			}).on('touchend', function () {
+				_this._touchendX = event.changedTouches[0].screenX;
+				_this._swipeGesure();
+			});
+		}
+
+		_createClass(Lightbox, [{
+			key: 'element',
+			value: function element() {
+				return this._$element;
+			}
+		}, {
+			key: 'modal',
+			value: function modal() {
+				return this._$modal;
+			}
+		}, {
+			key: 'navigateTo',
+			value: function navigateTo(index) {
+
+				if (index < 0 || index > this._$galleryItems.length - 1) return this;
+
+				this._galleryIndex = index;
+
+				this.updateNavigation();
+
+				this._$element = $(this._$galleryItems.get(this._galleryIndex));
+				this._handle();
+			}
+		}, {
+			key: 'navigateLeft',
+			value: function navigateLeft() {
+
+				if (!this._$galleryItems) return;
+
+				if (this._$galleryItems.length === 1) return;
+
+				if (this._galleryIndex === 0) {
+					if (this._config.wrapping) this._galleryIndex = this._$galleryItems.length - 1;else return;
+				} else //circular
+					this._galleryIndex--;
+
+				this._config.onNavigate.call(this, 'left', this._galleryIndex);
+				return this.navigateTo(this._galleryIndex);
+			}
+		}, {
+			key: 'navigateRight',
+			value: function navigateRight() {
+
+				if (!this._$galleryItems) return;
+
+				if (this._$galleryItems.length === 1) return;
+
+				if (this._galleryIndex === this._$galleryItems.length - 1) {
+					if (this._config.wrapping) this._galleryIndex = 0;else return;
+				} else //circular
+					this._galleryIndex++;
+
+				this._config.onNavigate.call(this, 'right', this._galleryIndex);
+				return this.navigateTo(this._galleryIndex);
+			}
+		}, {
+			key: 'updateNavigation',
+			value: function updateNavigation() {
+				if (!this._config.wrapping) {
+					var $nav = this._$lightboxContainer.find('div.ekko-lightbox-nav-overlay');
+					if (this._galleryIndex === 0) $nav.find('a:first-child').addClass('disabled');else $nav.find('a:first-child').removeClass('disabled');
+
+					if (this._galleryIndex === this._$galleryItems.length - 1) $nav.find('a:last-child').addClass('disabled');else $nav.find('a:last-child').removeClass('disabled');
+				}
+			}
+		}, {
+			key: 'close',
+			value: function close() {
+				return this._$modal.modal('hide');
+			}
+
+			// helper private methods
+		}, {
+			key: '_navigationalBinder',
+			value: function _navigationalBinder(event) {
+				event = event || window.event;
+				if (event.keyCode === 39) return this.navigateRight();
+				if (event.keyCode === 37) return this.navigateLeft();
+			}
+
+			// type detection private methods
+		}, {
+			key: '_detectRemoteType',
+			value: function _detectRemoteType(src, type) {
+
+				type = type || false;
+
+				if (!type && this._isImage(src)) type = 'image';
+				if (!type && this._getYoutubeId(src)) type = 'youtube';
+				if (!type && this._getVimeoId(src)) type = 'vimeo';
+				if (!type && this._getInstagramId(src)) type = 'instagram';
+
+				if (!type || ['image', 'youtube', 'vimeo', 'instagram', 'video', 'url'].indexOf(type) < 0) type = 'url';
+
+				return type;
+			}
+		}, {
+			key: '_isImage',
+			value: function _isImage(string) {
+				return string && string.match(/(^data:image\/.*,)|(\.(jp(e|g|eg)|gif|png|bmp|webp|svg)((\?|#).*)?$)/i);
+			}
+		}, {
+			key: '_containerToUse',
+			value: function _containerToUse() {
+				var _this2 = this;
+
+				// if currently showing an image, fade it out and remove
+				var $toUse = this._$lightboxBodyTwo;
+				var $current = this._$lightboxBodyOne;
+
+				if (this._$lightboxBodyTwo.hasClass('in')) {
+					$toUse = this._$lightboxBodyOne;
+					$current = this._$lightboxBodyTwo;
+				}
+
+				$current.removeClass('in show');
+				setTimeout(function () {
+					if (!_this2._$lightboxBodyTwo.hasClass('in')) _this2._$lightboxBodyTwo.empty();
+					if (!_this2._$lightboxBodyOne.hasClass('in')) _this2._$lightboxBodyOne.empty();
+				}, 500);
+
+				$toUse.addClass('in show');
+				return $toUse;
+			}
+		}, {
+			key: '_handle',
+			value: function _handle() {
+
+				var $toUse = this._containerToUse();
+				this._updateTitleAndFooter();
+
+				var currentRemote = this._$element.attr('data-remote') || this._$element.attr('href');
+				var currentType = this._detectRemoteType(currentRemote, this._$element.attr('data-type') || false);
+
+				if (['image', 'youtube', 'vimeo', 'instagram', 'video', 'url'].indexOf(currentType) < 0) return this._error(this._config.strings.type);
+
+				switch (currentType) {
+					case 'image':
+						this._preloadImage(currentRemote, $toUse);
+						this._preloadImageByIndex(this._galleryIndex, 3);
+						break;
+					case 'youtube':
+						this._showYoutubeVideo(currentRemote, $toUse);
+						break;
+					case 'vimeo':
+						this._showVimeoVideo(this._getVimeoId(currentRemote), $toUse);
+						break;
+					case 'instagram':
+						this._showInstagramVideo(this._getInstagramId(currentRemote), $toUse);
+						break;
+					case 'video':
+						this._showHtml5Video(currentRemote, $toUse);
+						break;
+					default:
+						// url
+						this._loadRemoteContent(currentRemote, $toUse);
+						break;
+				}
+
+				return this;
+			}
+		}, {
+			key: '_getYoutubeId',
+			value: function _getYoutubeId(string) {
+				if (!string) return false;
+				var matches = string.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/);
+				return matches && matches[2].length === 11 ? matches[2] : false;
+			}
+		}, {
+			key: '_getVimeoId',
+			value: function _getVimeoId(string) {
+				return string && string.indexOf('vimeo') > 0 ? string : false;
+			}
+		}, {
+			key: '_getInstagramId',
+			value: function _getInstagramId(string) {
+				return string && string.indexOf('instagram') > 0 ? string : false;
+			}
+
+			// layout private methods
+		}, {
+			key: '_toggleLoading',
+			value: function _toggleLoading(show) {
+				show = show || false;
+				if (show) {
+					this._$modalDialog.css('display', 'none');
+					this._$modal.removeClass('in show');
+					$('.modal-backdrop').append(this._config.loadingMessage);
+				} else {
+					this._$modalDialog.css('display', 'block');
+					this._$modal.addClass('in show');
+					$('.modal-backdrop').find('.ekko-lightbox-loader').remove();
+				}
+				return this;
+			}
+		}, {
+			key: '_calculateBorders',
+			value: function _calculateBorders() {
+				return {
+					top: this._totalCssByAttribute('border-top-width'),
+					right: this._totalCssByAttribute('border-right-width'),
+					bottom: this._totalCssByAttribute('border-bottom-width'),
+					left: this._totalCssByAttribute('border-left-width')
+				};
+			}
+		}, {
+			key: '_calculatePadding',
+			value: function _calculatePadding() {
+				return {
+					top: this._totalCssByAttribute('padding-top'),
+					right: this._totalCssByAttribute('padding-right'),
+					bottom: this._totalCssByAttribute('padding-bottom'),
+					left: this._totalCssByAttribute('padding-left')
+				};
+			}
+		}, {
+			key: '_totalCssByAttribute',
+			value: function _totalCssByAttribute(attribute) {
+				return parseInt(this._$modalDialog.css(attribute), 10) + parseInt(this._$modalContent.css(attribute), 10) + parseInt(this._$modalBody.css(attribute), 10);
+			}
+		}, {
+			key: '_updateTitleAndFooter',
+			value: function _updateTitleAndFooter() {
+				var title = this._$element.data('title') || "";
+				var caption = this._$element.data('footer') || "";
+
+				this._titleIsShown = false;
+				if (title || this._config.alwaysShowClose) {
+					this._titleIsShown = true;
+					this._$modalHeader.css('display', '').find('.modal-title').html(title || "&nbsp;");
+				} else this._$modalHeader.css('display', 'none');
+
+				this._footerIsShown = false;
+				if (caption) {
+					this._footerIsShown = true;
+					this._$modalFooter.css('display', '').html(caption);
+				} else this._$modalFooter.css('display', 'none');
+
+				return this;
+			}
+		}, {
+			key: '_showYoutubeVideo',
+			value: function _showYoutubeVideo(remote, $containerForElement) {
+				var id = this._getYoutubeId(remote);
+				var query = remote.indexOf('&') > 0 ? remote.substr(remote.indexOf('&')) : '';
+				var width = this._$element.data('width') || 560;
+				var height = this._$element.data('height') || width / (560 / 315);
+				return this._showVideoIframe('//www.youtube.com/embed/' + id + '?badge=0&autoplay=1&html5=1' + query, width, height, $containerForElement);
+			}
+		}, {
+			key: '_showVimeoVideo',
+			value: function _showVimeoVideo(id, $containerForElement) {
+				var width = this._$element.data('width') || 500;
+				var height = this._$element.data('height') || width / (560 / 315);
+				return this._showVideoIframe(id + '?autoplay=1', width, height, $containerForElement);
+			}
+		}, {
+			key: '_showInstagramVideo',
+			value: function _showInstagramVideo(id, $containerForElement) {
+				// instagram load their content into iframe's so this can be put straight into the element
+				var width = this._$element.data('width') || 612;
+				var height = width + 80;
+				id = id.substr(-1) !== '/' ? id + '/' : id; // ensure id has trailing slash
+				$containerForElement.html('<iframe width="' + width + '" height="' + height + '" src="' + id + 'embed/" frameborder="0" allowfullscreen></iframe>');
+				this._resize(width, height);
+				this._config.onContentLoaded.call(this);
+				if (this._$modalArrows) //hide the arrows when showing video
+					this._$modalArrows.css('display', 'none');
+				this._toggleLoading(false);
+				return this;
+			}
+		}, {
+			key: '_showVideoIframe',
+			value: function _showVideoIframe(url, width, height, $containerForElement) {
+				// should be used for videos only. for remote content use loadRemoteContent (data-type=url)
+				height = height || width; // default to square
+				$containerForElement.html('<div class="embed-responsive embed-responsive-16by9"><iframe width="' + width + '" height="' + height + '" src="' + url + '" frameborder="0" allowfullscreen class="embed-responsive-item"></iframe></div>');
+				this._resize(width, height);
+				this._config.onContentLoaded.call(this);
+				if (this._$modalArrows) this._$modalArrows.css('display', 'none'); //hide the arrows when showing video
+				this._toggleLoading(false);
+				return this;
+			}
+		}, {
+			key: '_showHtml5Video',
+			value: function _showHtml5Video(url, $containerForElement) {
+				// should be used for videos only. for remote content use loadRemoteContent (data-type=url)
+				var width = this._$element.data('width') || 560;
+				var height = this._$element.data('height') || width / (560 / 315);
+				$containerForElement.html('<div class="embed-responsive embed-responsive-16by9"><video width="' + width + '" height="' + height + '" src="' + url + '" preload="auto" autoplay controls class="embed-responsive-item"></video></div>');
+				this._resize(width, height);
+				this._config.onContentLoaded.call(this);
+				if (this._$modalArrows) this._$modalArrows.css('display', 'none'); //hide the arrows when showing video
+				this._toggleLoading(false);
+				return this;
+			}
+		}, {
+			key: '_loadRemoteContent',
+			value: function _loadRemoteContent(url, $containerForElement) {
+				var _this3 = this;
+
+				var width = this._$element.data('width') || 560;
+				var height = this._$element.data('height') || 560;
+
+				var disableExternalCheck = this._$element.data('disableExternalCheck') || false;
+				this._toggleLoading(false);
+
+				// external urls are loading into an iframe
+				// local ajax can be loaded into the container itself
+				if (!disableExternalCheck && !this._isExternal(url)) {
+					$containerForElement.load(url, $.proxy(function () {
+						return _this3._$element.trigger('loaded.bs.modal');l;
+					}));
+				} else {
+					$containerForElement.html('<iframe src="' + url + '" frameborder="0" allowfullscreen></iframe>');
+					this._config.onContentLoaded.call(this);
+				}
+
+				if (this._$modalArrows) //hide the arrows when remote content
+					this._$modalArrows.css('display', 'none');
+
+				this._resize(width, height);
+				return this;
+			}
+		}, {
+			key: '_isExternal',
+			value: function _isExternal(url) {
+				var match = url.match(/^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/);
+				if (typeof match[1] === "string" && match[1].length > 0 && match[1].toLowerCase() !== location.protocol) return true;
+
+				if (typeof match[2] === "string" && match[2].length > 0 && match[2].replace(new RegExp(':(' + ({
+					"http:": 80,
+					"https:": 443
+				})[location.protocol] + ')?$'), "") !== location.host) return true;
+
+				return false;
+			}
+		}, {
+			key: '_error',
+			value: function _error(message) {
+				console.error(message);
+				this._containerToUse().html(message);
+				this._resize(300, 300);
+				return this;
+			}
+		}, {
+			key: '_preloadImageByIndex',
+			value: function _preloadImageByIndex(startIndex, numberOfTimes) {
+
+				if (!this._$galleryItems) return;
+
+				var next = $(this._$galleryItems.get(startIndex), false);
+				if (typeof next == 'undefined') return;
+
+				var src = next.attr('data-remote') || next.attr('href');
+				if (next.attr('data-type') === 'image' || this._isImage(src)) this._preloadImage(src, false);
+
+				if (numberOfTimes > 0) return this._preloadImageByIndex(startIndex + 1, numberOfTimes - 1);
+			}
+		}, {
+			key: '_preloadImage',
+			value: function _preloadImage(src, $containerForImage) {
+				var _this4 = this;
+
+				$containerForImage = $containerForImage || false;
+
+				var img = new Image();
+				if ($containerForImage) {
+					(function () {
+
+						// if loading takes > 200ms show a loader
+						var loadingTimeout = setTimeout(function () {
+							$containerForImage.append(_this4._config.loadingMessage);
+						}, 200);
+
+						img.onload = function () {
+							if (loadingTimeout) clearTimeout(loadingTimeout);
+							loadingTimeout = null;
+							var image = $('<img />');
+							image.attr('src', img.src);
+							image.addClass('img-fluid');
+
+							// backward compatibility for bootstrap v3
+							image.css('width', '100%');
+
+							$containerForImage.html(image);
+							if (_this4._$modalArrows) _this4._$modalArrows.css('display', ''); // remove display to default to css property
+
+							_this4._resize(img.width, img.height);
+							_this4._toggleLoading(false);
+							return _this4._config.onContentLoaded.call(_this4);
+						};
+						img.onerror = function () {
+							_this4._toggleLoading(false);
+							return _this4._error(_this4._config.strings.fail + ('  ' + src));
+						};
+					})();
+				}
+
+				img.src = src;
+				return img;
+			}
+		}, {
+			key: '_swipeGesure',
+			value: function _swipeGesure() {
+				if (this._touchendX < this._touchstartX) {
+					return this.navigateRight();
+				}
+				if (this._touchendX > this._touchstartX) {
+					return this.navigateLeft();
+				}
+			}
+		}, {
+			key: '_resize',
+			value: function _resize(width, height) {
+
+				height = height || width;
+				this._wantedWidth = width;
+				this._wantedHeight = height;
+
+				var imageAspecRatio = width / height;
+
+				// if width > the available space, scale down the expected width and height
+				var widthBorderAndPadding = this._padding.left + this._padding.right + this._border.left + this._border.right;
+
+				// force 10px margin if window size > 575px
+				var addMargin = this._config.doc.body.clientWidth > 575 ? 20 : 0;
+				var discountMargin = this._config.doc.body.clientWidth > 575 ? 0 : 20;
+
+				var maxWidth = Math.min(width + widthBorderAndPadding, this._config.doc.body.clientWidth - addMargin, this._config.maxWidth);
+
+				if (width + widthBorderAndPadding > maxWidth) {
+					height = (maxWidth - widthBorderAndPadding - discountMargin) / imageAspecRatio;
+					width = maxWidth;
+				} else width = width + widthBorderAndPadding;
+
+				var headerHeight = 0,
+				    footerHeight = 0;
+
+				// as the resize is performed the modal is show, the calculate might fail
+				// if so, default to the default sizes
+				if (this._footerIsShown) footerHeight = this._$modalFooter.outerHeight(true) || 55;
+
+				if (this._titleIsShown) headerHeight = this._$modalHeader.outerHeight(true) || 67;
+
+				var borderPadding = this._padding.top + this._padding.bottom + this._border.bottom + this._border.top;
+
+				//calculated each time as resizing the window can cause them to change due to Bootstraps fluid margins
+				var margins = parseFloat(this._$modalDialog.css('margin-top')) + parseFloat(this._$modalDialog.css('margin-bottom'));
+
+				var maxHeight = Math.min(height, $(window).height() - borderPadding - margins - headerHeight - footerHeight, this._config.maxHeight - borderPadding - headerHeight - footerHeight);
+
+				if (height > maxHeight) {
+					// if height > the available height, scale down the width
+					width = Math.ceil(maxHeight * imageAspecRatio) + widthBorderAndPadding;
+				}
+
+				this._$lightboxContainer.css('height', maxHeight);
+				this._$modalDialog.css('flex', 1).css('maxWidth', width);
+
+				var modal = this._$modal.data('bs.modal');
+				if (modal) {
+					// v4 method is mistakenly protected
+					try {
+						modal._handleUpdate();
+					} catch (Exception) {
+						modal.handleUpdate();
+					}
+				}
+				return this;
+			}
+		}], [{
+			key: '_jQueryInterface',
+			value: function _jQueryInterface(config) {
+				var _this5 = this;
+
+				config = config || {};
+				return this.each(function () {
+					var $this = $(_this5);
+					var _config = $.extend({}, Lightbox.Default, $this.data(), typeof config === 'object' && config);
+
+					new Lightbox(_this5, _config);
+				});
+			}
+		}]);
+
+		return Lightbox;
+	})();
+
+	$.fn[NAME] = Lightbox._jQueryInterface;
+	$.fn[NAME].Constructor = Lightbox;
+	$.fn[NAME].noConflict = function () {
+		$.fn[NAME] = JQUERY_NO_CONFLICT;
+		return Lightbox._jQueryInterface;
+	};
+
+	return Lightbox;
+})(jQuery);
+//# sourceMappingURL=ekko-lightbox.js.map
+
+}(jQuery);
+
 !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.AOS=t():e.AOS=t()}(this,function(){return function(e){function t(o){if(n[o])return n[o].exports;var i=n[o]={exports:{},id:o,loaded:!1};return e[o].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="dist/",t(0)}([function(e,t,n){"use strict";function o(e){return e&&e.__esModule?e:{default:e}}var i=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(e[o]=n[o])}return e},r=n(1),a=(o(r),n(6)),u=o(a),c=n(7),f=o(c),s=n(8),d=o(s),l=n(9),p=o(l),m=n(10),b=o(m),v=n(11),y=o(v),g=n(14),h=o(g),w=[],k=!1,x={offset:120,delay:0,easing:"ease",duration:400,disable:!1,once:!1,startEvent:"DOMContentLoaded",throttleDelay:99,debounceDelay:50,disableMutationObserver:!1},j=function(){var e=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(e&&(k=!0),k)return w=(0,y.default)(w,x),(0,b.default)(w,x.once),w},O=function(){w=(0,h.default)(),j()},_=function(){w.forEach(function(e,t){e.node.removeAttribute("data-aos"),e.node.removeAttribute("data-aos-easing"),e.node.removeAttribute("data-aos-duration"),e.node.removeAttribute("data-aos-delay")})},S=function(e){return e===!0||"mobile"===e&&p.default.mobile()||"phone"===e&&p.default.phone()||"tablet"===e&&p.default.tablet()||"function"==typeof e&&e()===!0},z=function(e){x=i(x,e),w=(0,h.default)();var t=document.all&&!window.atob;return S(x.disable)||t?_():(document.querySelector("body").setAttribute("data-aos-easing",x.easing),document.querySelector("body").setAttribute("data-aos-duration",x.duration),document.querySelector("body").setAttribute("data-aos-delay",x.delay),"DOMContentLoaded"===x.startEvent&&["complete","interactive"].indexOf(document.readyState)>-1?j(!0):"load"===x.startEvent?window.addEventListener(x.startEvent,function(){j(!0)}):document.addEventListener(x.startEvent,function(){j(!0)}),window.addEventListener("resize",(0,f.default)(j,x.debounceDelay,!0)),window.addEventListener("orientationchange",(0,f.default)(j,x.debounceDelay,!0)),window.addEventListener("scroll",(0,u.default)(function(){(0,b.default)(w,x.once)},x.throttleDelay)),x.disableMutationObserver||(0,d.default)("[data-aos]",O),w)};e.exports={init:z,refresh:j,refreshHard:O}},function(e,t){},,,,,function(e,t){(function(t){"use strict";function n(e,t,n){function o(t){var n=b,o=v;return b=v=void 0,k=t,g=e.apply(o,n)}function r(e){return k=e,h=setTimeout(s,t),_?o(e):g}function a(e){var n=e-w,o=e-k,i=t-n;return S?j(i,y-o):i}function c(e){var n=e-w,o=e-k;return void 0===w||n>=t||n<0||S&&o>=y}function s(){var e=O();return c(e)?d(e):void(h=setTimeout(s,a(e)))}function d(e){return h=void 0,z&&b?o(e):(b=v=void 0,g)}function l(){void 0!==h&&clearTimeout(h),k=0,b=w=v=h=void 0}function p(){return void 0===h?g:d(O())}function m(){var e=O(),n=c(e);if(b=arguments,v=this,w=e,n){if(void 0===h)return r(w);if(S)return h=setTimeout(s,t),o(w)}return void 0===h&&(h=setTimeout(s,t)),g}var b,v,y,g,h,w,k=0,_=!1,S=!1,z=!0;if("function"!=typeof e)throw new TypeError(f);return t=u(t)||0,i(n)&&(_=!!n.leading,S="maxWait"in n,y=S?x(u(n.maxWait)||0,t):y,z="trailing"in n?!!n.trailing:z),m.cancel=l,m.flush=p,m}function o(e,t,o){var r=!0,a=!0;if("function"!=typeof e)throw new TypeError(f);return i(o)&&(r="leading"in o?!!o.leading:r,a="trailing"in o?!!o.trailing:a),n(e,t,{leading:r,maxWait:t,trailing:a})}function i(e){var t="undefined"==typeof e?"undefined":c(e);return!!e&&("object"==t||"function"==t)}function r(e){return!!e&&"object"==("undefined"==typeof e?"undefined":c(e))}function a(e){return"symbol"==("undefined"==typeof e?"undefined":c(e))||r(e)&&k.call(e)==d}function u(e){if("number"==typeof e)return e;if(a(e))return s;if(i(e)){var t="function"==typeof e.valueOf?e.valueOf():e;e=i(t)?t+"":t}if("string"!=typeof e)return 0===e?e:+e;e=e.replace(l,"");var n=m.test(e);return n||b.test(e)?v(e.slice(2),n?2:8):p.test(e)?s:+e}var c="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},f="Expected a function",s=NaN,d="[object Symbol]",l=/^\s+|\s+$/g,p=/^[-+]0x[0-9a-f]+$/i,m=/^0b[01]+$/i,b=/^0o[0-7]+$/i,v=parseInt,y="object"==("undefined"==typeof t?"undefined":c(t))&&t&&t.Object===Object&&t,g="object"==("undefined"==typeof self?"undefined":c(self))&&self&&self.Object===Object&&self,h=y||g||Function("return this")(),w=Object.prototype,k=w.toString,x=Math.max,j=Math.min,O=function(){return h.Date.now()};e.exports=o}).call(t,function(){return this}())},function(e,t){(function(t){"use strict";function n(e,t,n){function i(t){var n=b,o=v;return b=v=void 0,O=t,g=e.apply(o,n)}function r(e){return O=e,h=setTimeout(s,t),_?i(e):g}function u(e){var n=e-w,o=e-O,i=t-n;return S?x(i,y-o):i}function f(e){var n=e-w,o=e-O;return void 0===w||n>=t||n<0||S&&o>=y}function s(){var e=j();return f(e)?d(e):void(h=setTimeout(s,u(e)))}function d(e){return h=void 0,z&&b?i(e):(b=v=void 0,g)}function l(){void 0!==h&&clearTimeout(h),O=0,b=w=v=h=void 0}function p(){return void 0===h?g:d(j())}function m(){var e=j(),n=f(e);if(b=arguments,v=this,w=e,n){if(void 0===h)return r(w);if(S)return h=setTimeout(s,t),i(w)}return void 0===h&&(h=setTimeout(s,t)),g}var b,v,y,g,h,w,O=0,_=!1,S=!1,z=!0;if("function"!=typeof e)throw new TypeError(c);return t=a(t)||0,o(n)&&(_=!!n.leading,S="maxWait"in n,y=S?k(a(n.maxWait)||0,t):y,z="trailing"in n?!!n.trailing:z),m.cancel=l,m.flush=p,m}function o(e){var t="undefined"==typeof e?"undefined":u(e);return!!e&&("object"==t||"function"==t)}function i(e){return!!e&&"object"==("undefined"==typeof e?"undefined":u(e))}function r(e){return"symbol"==("undefined"==typeof e?"undefined":u(e))||i(e)&&w.call(e)==s}function a(e){if("number"==typeof e)return e;if(r(e))return f;if(o(e)){var t="function"==typeof e.valueOf?e.valueOf():e;e=o(t)?t+"":t}if("string"!=typeof e)return 0===e?e:+e;e=e.replace(d,"");var n=p.test(e);return n||m.test(e)?b(e.slice(2),n?2:8):l.test(e)?f:+e}var u="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},c="Expected a function",f=NaN,s="[object Symbol]",d=/^\s+|\s+$/g,l=/^[-+]0x[0-9a-f]+$/i,p=/^0b[01]+$/i,m=/^0o[0-7]+$/i,b=parseInt,v="object"==("undefined"==typeof t?"undefined":u(t))&&t&&t.Object===Object&&t,y="object"==("undefined"==typeof self?"undefined":u(self))&&self&&self.Object===Object&&self,g=v||y||Function("return this")(),h=Object.prototype,w=h.toString,k=Math.max,x=Math.min,j=function(){return g.Date.now()};e.exports=n}).call(t,function(){return this}())},function(e,t){"use strict";function n(e){var t=void 0,o=void 0,i=void 0;for(t=0;t<e.length;t+=1){if(o=e[t],o.dataset&&o.dataset.aos)return!0;if(i=o.children&&n(o.children))return!0}return!1}function o(e,t){var n=window.document,o=window.MutationObserver||window.WebKitMutationObserver||window.MozMutationObserver,a=new o(i);r=t,a.observe(n.documentElement,{childList:!0,subtree:!0,removedNodes:!0})}function i(e){e&&e.forEach(function(e){var t=Array.prototype.slice.call(e.addedNodes),o=Array.prototype.slice.call(e.removedNodes),i=t.concat(o);if(n(i))return r()})}Object.defineProperty(t,"__esModule",{value:!0});var r=function(){};t.default=o},function(e,t){"use strict";function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function o(){return navigator.userAgent||navigator.vendor||window.opera||""}Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}(),r=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i,a=/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i,u=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i,c=/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i,f=function(){function e(){n(this,e)}return i(e,[{key:"phone",value:function(){var e=o();return!(!r.test(e)&&!a.test(e.substr(0,4)))}},{key:"mobile",value:function(){var e=o();return!(!u.test(e)&&!c.test(e.substr(0,4)))}},{key:"tablet",value:function(){return this.mobile()&&!this.phone()}}]),e}();t.default=new f},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=function(e,t,n){var o=e.node.getAttribute("data-aos-once");t>e.position?e.node.classList.add("aos-animate"):"undefined"!=typeof o&&("false"===o||!n&&"true"!==o)&&e.node.classList.remove("aos-animate")},o=function(e,t){var o=window.pageYOffset,i=window.innerHeight;e.forEach(function(e,r){n(e,i+o,t)})};t.default=o},function(e,t,n){"use strict";function o(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var i=n(12),r=o(i),a=function(e,t){return e.forEach(function(e,n){e.node.classList.add("aos-init"),e.position=(0,r.default)(e.node,t.offset)}),e};t.default=a},function(e,t,n){"use strict";function o(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var i=n(13),r=o(i),a=function(e,t){var n=0,o=0,i=window.innerHeight,a={offset:e.getAttribute("data-aos-offset"),anchor:e.getAttribute("data-aos-anchor"),anchorPlacement:e.getAttribute("data-aos-anchor-placement")};switch(a.offset&&!isNaN(a.offset)&&(o=parseInt(a.offset)),a.anchor&&document.querySelectorAll(a.anchor)&&(e=document.querySelectorAll(a.anchor)[0]),n=(0,r.default)(e).top,a.anchorPlacement){case"top-bottom":break;case"center-bottom":n+=e.offsetHeight/2;break;case"bottom-bottom":n+=e.offsetHeight;break;case"top-center":n+=i/2;break;case"bottom-center":n+=i/2+e.offsetHeight;break;case"center-center":n+=i/2+e.offsetHeight/2;break;case"top-top":n+=i;break;case"bottom-top":n+=e.offsetHeight+i;break;case"center-top":n+=e.offsetHeight/2+i}return a.anchorPlacement||a.offset||isNaN(t)||(o=t),n+o};t.default=a},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=function(e){for(var t=0,n=0;e&&!isNaN(e.offsetLeft)&&!isNaN(e.offsetTop);)t+=e.offsetLeft-("BODY"!=e.tagName?e.scrollLeft:0),n+=e.offsetTop-("BODY"!=e.tagName?e.scrollTop:0),e=e.offsetParent;return{top:n,left:t}};t.default=n},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=function(e){return e=e||document.querySelectorAll("[data-aos]"),Array.prototype.map.call(e,function(e){return{node:e}})};t.default=n}])});
 /*!
 * Clamp.js 0.5.1
@@ -273,6 +942,14 @@ jQuery(function($){
         $(reviewSlider).slick('slickGoTo', $(this).attr('rel'));
     })
 
+
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox({
+            alwaysShowClose: true,
+            showArrows: true
+        });
+    });
     
     /**
      * parallax scroll

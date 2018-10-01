@@ -1,0 +1,53 @@
+.ekko-lightbox {
+   .modal-content {
+         background-color: transparent;
+         border: 0;
+         border-radius: 0;
+   }
+
+   .modal-body {
+      padding: 0;
+   }
+
+   .modal-header {
+      padding: 0;
+      border: 0;
+   }
+
+   .close {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1;
+      color: #FFF;
+      text-shadow: 0 0 0 #fff;
+      opacity: 1;
+      content: '';
+      position: absolute;
+      right: 0;
+      transform: translate(25%, 0);
+
+      @include icon(close, after);
+
+      &:hover {
+         color: #FFF!important;
+         opacity: .5!important;
+      }
+      
+      > span {
+         display: none;
+      }
+   }
+}
+
+.ekko-lightbox-nav-overlay a {
+   opacity: .5;
+
+   &:hover {
+      opacity: 1;
+      color: #FFF;
+   }
+}
+
+.ekko-lightbox-nav-overlay a span {
+   padding: 0 15px;
+}

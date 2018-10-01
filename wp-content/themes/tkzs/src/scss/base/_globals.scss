@@ -7,6 +7,10 @@ body {
    color: $color-font;
    font-family: 'Roboto', sans-serif;
    overflow-x: hidden;
+
+   &.modal-open {
+      padding-right: 0!important;
+   }
 }
 a {
    color: inherit;

@@ -7,7 +7,7 @@
          <?php foreach ($gallery as $image) : ?>
             <div class="col-12 col-md-8 col-lg-6">
                <div class="gallery__image-container">
-                  <a href="<?php echo $image['full_image_url']; ?>">
+                  <a href="<?php echo $image['full_image_url']; ?>" data-toggle="lightbox" data-gallery="gallery">
                      <div class="gallery__image" style="background-image: url(<?php echo $image['thumbnail_image_url']; ?>)">
                      </div>
                   </a>

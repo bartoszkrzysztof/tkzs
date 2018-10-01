@@ -1,7 +1,7 @@
 <?php
    $thumb = get_the_post_thumbnail_url();
 ?>
-<div class="card">
+<div class="card card--gallery">
    <a href="<?php the_permalink(); ?>">
       <div class="card-image" style="background-image: url(<?php echo $thumb; ?>);"></div>
    </a>
@@ -11,14 +11,4 @@
       <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
       </h1>
    </div>
-   <div class="card-body">
-      <div class="text text--reset-gaps equal-text">
-         <?php the_excerpt(); ?>
-      </div>
-   </div>
-   <div class="card-footer">
-      <div class="text-box__link">
-      <a href="<?php the_permalink(); ?>" class="button button--arrow">Czytaj dalej</a>
-      </div>
-   </div> 
 </div>

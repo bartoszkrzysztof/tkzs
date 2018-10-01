@@ -39,11 +39,14 @@
 	@if $filename == angel-up {
 		$char: "\E004";
 	}
-	@if $filename == facebook {
+	@if $filename == close {
 		$char: "\E005";
 	}
-	@if $filename == user {
+	@if $filename == facebook {
 		$char: "\E006";
+	}
+	@if $filename == user {
+		$char: "\E007";
 	}
 
 	@return $char;
@@ -71,6 +74,9 @@
 }
 .icon-angel-up {
 	@include icon(angel-up);
+}
+.icon-close {
+	@include icon(close);
 }
 .icon-facebook {
 	@include icon(facebook);

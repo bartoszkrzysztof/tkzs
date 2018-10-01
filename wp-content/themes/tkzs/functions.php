@@ -124,11 +124,14 @@ add_action( 'init', function(){
     // Ułatwiamy trochę stylowanie formularzy itp.
     add_theme_support('html5', array('comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'widgets'));
     
+});
 
+add_action('init', function() {
     global $wp_rewrite;
     $GLOBALS['wp_rewrite']->pagination_base = 'strona';
-    $wp_rewrite->flush_rules();
-});
+    add_rewrite_rule('^galerie/strona/([0-9]+)/?','index.php?post_type=galleries&paged=$matches[1]', 'top');
+}, 10, 0);
+
 
 @ini_set( 'upload_max_size' , '64M' );
 @ini_set( 'post_max_size', '64M');
