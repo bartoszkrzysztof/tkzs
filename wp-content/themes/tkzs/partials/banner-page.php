@@ -1,13 +1,15 @@
 <?php 
    if ( is_home() && ! is_front_page() ) {
       $acf_id = get_option( 'page_for_posts' );
-      $banner = get_field('page-banner', $acf_id)['url'];
+      $banner = get_field('page-banner', $acf_id);
+      $banner = $banner['url'];
    }
-   else if (is_archive()) {
+   elseif (is_archive()) {
       $banner = get_archive_thumbnail_src('full');
    }
-   else if (get_field('page-banner')) {
-      $banner = get_field('page-banner')['url'];
+   elseif (get_field('page-banner')) {
+      $banner = get_field('page-banner');
+      $banner = $banner['url'];
    }
    else {
       $banner = get_template_directory_uri().'/dist/static/img/banner.jpg';
@@ -21,8 +23,8 @@
             if ( is_home() && ! is_front_page() ) {
                echo single_post_title();
             }
-            else if (is_archive()) {
-               echo post_type_archive_title( '', false );
+            elseif (is_archive()) {
+               echo get_the_archive_title();
             }
             else {
                the_title();
@@ -46,9 +48,20 @@
 <div class="breadcrumbs">
    <div class="container">
       <?php
-         if ( function_exists('yoast_breadcrumb') ) {
-            yoast_breadcrumb();
-         }
+         if (is_tax('location')) :
+      ?>
+         <span><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Strona główna</a> \ <a href="<?php echo esc_url( home_url( '/inicjatywy' ) ); ?>">Inicjatywy</a> \ <span class="breadcrumb_last"><?php echo get_the_archive_title(); ?></span></span></span>
+      <?php
+         elseif (is_singular('initiatives')) : 
+            $term = get_the_terms($post->ID, 'location');
+      ?>
+         <span><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Strona główna</a> \ <a href="<?php echo esc_url( home_url( '/inicjatywy' ) ); ?>">Inicjatywy</a> \ <a href="<?php echo get_category_link( $term[0]->term_id); ?>"><?php echo $term[0]->name; ?></a> \ <span class="breadcrumb_last"><?php the_title(); ?></span></span></span>
+      <?php 
+         else :
+            if ( function_exists('yoast_breadcrumb') ) {
+               yoast_breadcrumb();
+            }
+         endif;
       ?>
    </div>
 </div>

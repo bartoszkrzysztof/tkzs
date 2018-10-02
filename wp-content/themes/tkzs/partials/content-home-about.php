@@ -1,6 +1,6 @@
 <div class="col-24 col-xl-20">
-   <?php if (get_sub_field('icon')) : ?>
-      <img src="<?php echo get_sub_field('icon')['url']; ?>" alt="<?php echo get_sub_field('title'); ?>" class="home-about__icon">
+   <?php if (get_sub_field('icon')) : $icon = get_sub_field('icon'); ?>
+      <img src="<?php echo $icon['url']; ?>" alt="<?php echo get_sub_field('title'); ?>" class="home-about__icon">
    <?php endif; ?>
    <h2 class="headline headline--main home-about__title"><?php echo get_sub_field('title'); ?></h2>
 </div>

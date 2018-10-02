@@ -3,15 +3,15 @@
 add_action( 'init', function(){
 
 	$labels = array(
-		'name'                  => _x( 'Wpisy', 'Post Type General Name', 'theme' ),
-		'singular_name'         => _x( 'Wpis', 'Post Type Singular Name', 'theme' ),
-		'menu_name'             => __( 'Inicjatywy', 'theme' ),
+		'name'                  => _x( 'Punkty', 'Post Type General Name', 'theme' ),
+		'singular_name'         => _x( 'Punkt', 'Post Type Singular Name', 'theme' ),
+		'menu_name'             => __( 'Punkty', 'theme' ),
 	);
 	$args = array(
 		'label'                 => __( 'Inicjatywy', 'theme' ),
 		'labels'                => $labels,
-        'supports'              => array( 'title', 'author', 'editor' ),
-        'rewrite'               => array('slug' => 'inicjatywa', 'with_front' => false),
+        'supports'              => array( 'title', 'author', 'editor', 'excerpt', 'thumbnail' ),
+        'rewrite'               => array('slug' => 'inicjatywa-punkt', 'with_front' => false),
 		'hierarchical'          => true,
 		'public'                => true,
 		'show_ui'               => true,
@@ -43,7 +43,7 @@ add_action( 'init', function() {
 		'show_ui'           => true,
 		'show_admin_column' => true,
 		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'inicjatywa' ),
+		'rewrite'           => array( 'slug' => 'inicjatywa', 'with_front' => true),
 	);
 	register_taxonomy( 'location', array( 'initiatives' ), $args );
 

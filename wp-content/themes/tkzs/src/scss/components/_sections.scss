@@ -104,3 +104,35 @@
       margin-bottom: 60px;
    }
 }
+
+.publication {
+   margin-bottom: 40px;
+   
+   &__image-container {
+      background: $color-background-light;
+      position: relative;
+      min-height: 260px;
+   }
+
+   &__image {
+      max-width: 90%;
+      max-height: 80%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+   }
+
+   &__description {
+      padding: 0 0 0 15px;
+      margin: 0;
+      line-height: 1.63;
+      color: $color-font-text-80;
+   }
+
+   &__headline {
+      padding: 10px 0 20px 15px;
+      font-size: 26px;
+      line-height: 1.4;
+   }
+}

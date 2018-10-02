@@ -31,10 +31,10 @@ function mda_register_menu()
 {
     // menu_handle - kotwica, po której odwołujemy się w motywie do danego menu
     // Menu name - nazwa pozycji menu, która wyświetli się w panelu admina
-    register_nav_menus([
+    register_nav_menus( array(
         'header_menu' => __('Site-header menu'),
         'footer_menu' => __('Site-footer menu')
-    ]);
+    ));
 }
 
 /**
@@ -130,6 +130,7 @@ add_action('init', function() {
     global $wp_rewrite;
     $GLOBALS['wp_rewrite']->pagination_base = 'strona';
     add_rewrite_rule('^galerie/strona/([0-9]+)/?','index.php?post_type=galleries&paged=$matches[1]', 'top');
+    add_rewrite_rule('^publikacje/strona/([0-9]+)/?','index.php?post_type=publications&paged=$matches[1]', 'top');
 }, 10, 0);
 
 

@@ -10,8 +10,8 @@ add_action( 'init', function(){
 	$args = array(
 		'label'                 => __( 'Publikacje', 'theme' ),
 		'labels'                => $labels,
-        'supports'              => array( 'title', 'author', 'editor' ),
-        'rewrite'               => array('slug' => 'publikacja', 'with_front' => false),
+        'supports'              => array( 'title', 'thumbnail' ),
+        'rewrite'               => array('slug' => 'publikacje', 'with_front' => false),
 		'hierarchical'          => true,
 		'public'                => true,
 		'show_ui'               => true,

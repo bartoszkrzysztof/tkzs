@@ -7,9 +7,9 @@
    </a>
    <div class="card-header">
       <p class="text text--light text--smaller card-date"><?php echo get_the_date(); ?></p>
-      <h1 class="headline headline--card equal-headline">
+      <h3 class="headline headline--card equal-headline">
       <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-      </h1>
+      </h3>
    </div>
    <div class="card-body">
       <div class="text text--reset-gaps equal-text">

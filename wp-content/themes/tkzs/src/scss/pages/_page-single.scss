@@ -16,6 +16,14 @@
       font-weight: 500;
       line-height: 1.63;
       color: $color-font-text;
+      width: 80%;
+
+      &--localizaction {
+         color: $color-font-text-50;
+         font-weight: 400;
+         font-size: 20px;
+         margin-bottom: 30px;
+      }
    }
 }
 
