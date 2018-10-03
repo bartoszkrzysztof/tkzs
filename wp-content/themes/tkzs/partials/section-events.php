@@ -24,22 +24,19 @@
                ?>
                <div class="col-24 col-md-12 col-xl-8">
                   <div class="card">
-                     <div class="card-image card-image--poster" style="background-image: url(<?php echo ($featured_img_url) ? $featured_img_url : $no_image; ?>)">
+                     <a href="<?php echo $featured_img_url; ?>" data-toggle="lightbox">
+                        <div class="card-image card-image--poster" style="background-image: url(<?php echo ($featured_img_url) ? $featured_img_url : $no_image; ?>)">
                      </div>
+                     </a>
                      <div class="card-header">
                         <p class="text text--light text--smaller card-date"><?php echo get_the_date(); ?></p>
                         <h1 class="headline headline--card equal-headline"><?php the_title(); ?></h1>
                      </div>
-                     <div class="card-body">
+                     <div class="card-body card-body--event">
                         <div class="text text--reset-gaps equal-text">
                            <?php the_excerpt(); ?>
                         </div>
                      </div>
-                     <div class="card-footer">
-                        <div class="text-box__link">
-                           <a href="<?php the_permalink(); ?>" class="button button--arrow">Czytaj więcej</a>
-                        </div>
-                     </div> 
                   </div>
                </div>
             <?php endwhile; ?>

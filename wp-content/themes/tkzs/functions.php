@@ -181,3 +181,11 @@ add_filter('wpcf7_form_elements', function($content) {
 
     return $content;
 });
+
+function add_image_responsive_class($content) {
+    $pattern ="/<img(.*?)class=\"(.*?)\"(.*?)>/i";
+    $replacement = '<div class="column-break"><img$1class="$2 img-responsive"$3></div>';
+    $content = preg_replace($pattern, $replacement, $content);
+    return $content;
+ }
+ add_filter('the_content', 'add_image_responsive_class');

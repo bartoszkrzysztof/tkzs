@@ -4,7 +4,9 @@
 <div class="publication">
    <div class="row">
       <div class="col-10 publication__image-container">
-         <img src="<?php echo $thumb; ?>" alt="<?php the_title(); ?>" class="publication__image">
+         <a href="<?php echo $thumb; ?>" data-toggle="lightbox">
+            <img src="<?php echo $thumb; ?>" alt="<?php the_title(); ?>" class="publication__image">
+         </a>
       </div>
       <div class="col-14">
          <h3 class="headline publication__headline">
