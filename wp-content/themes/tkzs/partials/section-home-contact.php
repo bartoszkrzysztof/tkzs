@@ -1,23 +1,13 @@
-<div class="section section--background">
-   <div class="container">
-      <div class="row">
-         <div class="col-24">
-            <h2 class="headline headline--main section__headline">Kontakt</h2>
-         </div>
-         <div class="col-24">
+<div class="home-about home-about-map">
+   <div class="row align-items-center justify-content-center">
+      <div class="col-24 col-md-12 home-map-container">
+         <div id="mapHome" class="home-map"></div>
+      </div>
+      <div class="col-24 col-md-12 home-map-form">
+         <div class="half-container half-container--clear">
+            <h2 class="headline headline--main section__headline text-left">Kontakt</h2>
             <div class="contact-form">
-               <div class="input">
-                  <input type="text" class="input__field input__field--text" placeholder="Imię i nazwisko">
-               </div>
-               <div class="input">
-                  <input type="text" class="input__field input__field--text" placeholder="Twój adres e-mail">
-               </div>
-               <div class="input">
-                  <textarea class="input__field input__field--textarea" placeholder="Treść wiadomości"></textarea>
-               </div>
-               <div class="input">
-                  <input type="submit" class="button button--full" value="Wyślij">
-               </div>
+               <?php echo do_shortcode('[contact-form-7 id="150" title="Formularz kontaktowy"]'); ?>
             </div>
          </div>
       </div>

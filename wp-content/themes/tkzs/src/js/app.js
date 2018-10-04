@@ -170,7 +170,49 @@ jQuery(function($){
     //         var h = $(this).height()
     //         $(this).css('transform', 'translateY(' + (h - (scrolled * .2))+'px)');
     //     });
-	// }
+    // }
+    
+    var map;
+    function initmap() {
+        map = new L.Map('mapid');
+
+        var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        var osmAttrib='Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
+        var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 24, attribution: osmAttrib});		
+
+        map.setView(new L.LatLng(52.61509, 16.57745),17);
+        map.addLayer(osm);
+
+        var marker = L.marker([52.61509, 16.57745]).addTo(map);
+    }
+
+    var contactMap = document.getElementById('mapid');
+
+    if (contactMap !== null) {
+        initmap();
+    }
+
+    
+    var homeMap;
+    function initmaphome() {
+        homeMap = new L.Map('mapHome');
+
+        var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        var osmAttrib='Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
+        var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 24, attribution: osmAttrib});		
+
+        homeMap.setView(new L.LatLng(52.61509, 16.57745),17);
+        homeMap.addLayer(osm);
+
+        var marker = L.marker([52.61509, 16.57745]).addTo(homeMap);
+        marker.bindPopup('<span class="popup-title">Towarzystwo Kultury Ziemi Szamotulskiej</span><br />ul. Wroniecka 30, 64-500 Szamotuły<br /><a href="mailto:tkzsz@tlen.pl">tkzsz@tlen.pl</a><br />tel. +48 61/ 29 218 13').openPopup();
+    }
+
+    var homeMapCont = document.getElementById('mapHome');
+
+    if (homeMapCont !== null) {
+        initmaphome();
+    }
 
 }); 
 

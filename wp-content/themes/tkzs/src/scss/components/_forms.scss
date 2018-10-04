@@ -17,3 +17,11 @@
       }
    }
 }
+
+.contact-form-page {
+   .input {
+      &__field {
+         background: $color-background-light;
+      }
+   }
+}

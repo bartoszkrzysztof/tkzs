@@ -165,6 +165,10 @@
 
 .half-container {
    max-width: $half-container;
+
+   &--clear {
+      float: none!important;
+   }
 }
 
 .home-about {
@@ -258,5 +262,24 @@
 
    .text {
       color: #FFF;
+   }
+}
+
+.home-map {
+   min-height: 700px;
+   height: 100%;
+   // background: #000;
+}
+
+.contact-form {
+   text-align: left;
+   color: $color-font-text;
+}
+
+.home-about-map {
+   background: $color-background-light;
+
+   .half-container--clear {
+      padding-left: 40px;
    }
 }

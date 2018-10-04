@@ -90,8 +90,8 @@ add_action('wp_enqueue_scripts', function(){
     wp_dequeue_script('wp-embed');
 
     // Wyrejestrowujemy jQuery, ponieważ wrzucamy je do bundle.js!
-    wp_deregister_script('jquery');
-    wp_dequeue_script('jquery');
+    // wp_deregister_script('jquery');
+    // wp_dequeue_script('jquery');
 
     // Rejestrujemy skrypty
     $manifest_js = (array) json_decode(file_get_contents($_base_url . '/dist/js/rev-manifest.json'), true);
