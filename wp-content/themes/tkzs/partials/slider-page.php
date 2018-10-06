@@ -34,7 +34,13 @@
                   <div class="row justify-content-center slider-page__nav">
                      <?php while (have_rows('cite_slider', $front_id)) : the_row(); ?>
                         <div class="col-3 slider-page__nav-item review-slider-nav <?php echo ($i == 0) ? 'active' : ''; ?>" rel="<?php echo $i; ?>">
-                           <div class="slider-page__nav-icon"><span class="icon-user"></span></div>
+                           <div class="slider-page__nav-icon">
+                              <?php if (get_sub_field('photo')): ?>
+                                 <div class="slider-page__image" style="background-image: url(<?php echo get_sub_field('photo')['sizes']['thumbnail'] ?>)"></div>
+                              <?php else : ?>
+                                 <span class="icon-user"></span>
+                              <?php endif; ?>
+                           </div>
                            <?php echo get_sub_field('name'); ?>
                         </div>
                      <?php $i++; endwhile; ?>

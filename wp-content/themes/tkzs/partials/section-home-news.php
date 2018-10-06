@@ -57,7 +57,8 @@
                         $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full');
                      ?>
                      <div class="col-24">
-                        <div class="home-grid__box home-grid__box--image" style="background-image: url(<?php echo $featured_img_url; ?>)">
+                        <div class="home-grid__box home-grid__box--image">
+                           <div class="home-grid__image" style="background-image: url(<?php echo ($featured_img_url) ? $featured_img_url :  get_template_directory_uri().'/dist/static/img/placeholder-home1.jpg'; ?>)"></div>
                            <div class="home-grid__box-content home-grid__box-content--image rect-box rect-box--image">
                               <?php echo get_template_part('partials/content', 'home-grid'); ?>
                            </div>
@@ -77,7 +78,8 @@
                         $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full');
                      ?>
                      <div class="col-24">
-                        <div class="home-grid__box home-grid__box--image" style="background-image: url(<?php echo $featured_img_url; ?>)">
+                        <div class="home-grid__box home-grid__box--image">
+                           <div class="home-grid__image" style="background-image: url(<?php echo ($featured_img_url) ? $featured_img_url : get_template_directory_uri().'/dist/static/img/placeholder-home2.jpg'; ?>)"></div>
                            <div class="home-grid__box-content home-grid__box-content--image rect-box rect-box--image">
                               <?php echo get_template_part('partials/content', 'home-grid'); ?>
                            </div>

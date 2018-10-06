@@ -3,9 +3,9 @@
 add_action( 'init', function(){
 
 	$labels = array(
-		'name'                  => _x( 'Punkty', 'Post Type General Name', 'theme' ),
-		'singular_name'         => _x( 'Punkt', 'Post Type Singular Name', 'theme' ),
-		'menu_name'             => __( 'Punkty', 'theme' ),
+		'name'                  => _x( 'Inicjatywy', 'Post Type General Name', 'theme' ),
+		'singular_name'         => _x( 'Inicjatywa', 'Post Type Singular Name', 'theme' ),
+		'menu_name'             => __( 'Inicjatywy', 'theme' ),
 	);
 	$args = array(
 		'label'                 => __( 'Inicjatywy', 'theme' ),
@@ -33,9 +33,9 @@ add_action( 'init', function(){
 //dodanie taksonomii status
 add_action( 'init', function() {
 	$labels = array(
-		'name'              => _x( 'Inicjatywa', 'taxonomy general name', 'theme' ),
-		'singular_name'     => _x( 'Inicjatywa', 'taxonomy singular name', 'theme' ),
-		'menu_name'         => __( 'Inicjatywa', 'theme' ),
+		'name'              => _x( 'Kategorie', 'taxonomy general name', 'theme' ),
+		'singular_name'     => _x( 'Kategoria', 'taxonomy singular name', 'theme' ),
+		'menu_name'         => __( 'Kategorie', 'theme' ),
 	);
 	$args = array(
 		'hierarchical'      => true,

@@ -132,6 +132,7 @@ jQuery(function($){
         autoplay: true,
         prevArrow: '<span class="events-slider__arrow events-slider__arrow--prev"><span class="icon-angel-left"></span></span>',
         nextArrow: '<span class="events-slider__arrow events-slider__arrow--next"><span class="icon-angel-right"></span></span>',
+        autoplaySpeed: 5000
     })
     .on('afterChange', function(event, slick, currentSlide) {
         $(reviewSliderNav).each(function() {
@@ -153,25 +154,6 @@ jQuery(function($){
         });
     });
     
-    /**
-     * parallax scroll
-    //  */
-    // $(window).scroll(function(e){
-    //     parallaxScroll();
-    // });
-
-    // function parallaxScroll(){
-	// 	var scrolled = $(window).scrollTop();
-    //     $('.parallax-1').each(function() {
-    //         var h = ($(this).height() / 2);
-    //         $(this).css('transform', 'translateY(' + (h - (scrolled * .1))+'px)');
-    //     });
-    //     $('.parallax-2').each(function() {
-    //         var h = $(this).height()
-    //         $(this).css('transform', 'translateY(' + (h - (scrolled * .2))+'px)');
-    //     });
-    // }
-    
     var map;
     function initmap() {
         map = new L.Map('mapid');
@@ -180,10 +162,10 @@ jQuery(function($){
         var osmAttrib='Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
         var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 24, attribution: osmAttrib});		
 
-        map.setView(new L.LatLng(52.61509, 16.57745),17);
+        map.setView(new L.LatLng(52.61551, 16.57792),17);
         map.addLayer(osm);
 
-        var marker = L.marker([52.61509, 16.57745]).addTo(map);
+        var marker = L.marker([52.61551, 16.57792]).addTo(map);
     }
 
     var contactMap = document.getElementById('mapid');
@@ -201,10 +183,10 @@ jQuery(function($){
         var osmAttrib='Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
         var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 24, attribution: osmAttrib});		
 
-        homeMap.setView(new L.LatLng(52.61509, 16.57745),17);
+        homeMap.setView(new L.LatLng(52.61551, 16.57792),17);
         homeMap.addLayer(osm);
 
-        var marker = L.marker([52.61509, 16.57745]).addTo(homeMap);
+        var marker = L.marker([52.61551, 16.57792]).addTo(homeMap);
         marker.bindPopup('<span class="popup-title">Towarzystwo Kultury Ziemi Szamotulskiej</span><br />ul. Wroniecka 30, 64-500 Szamotuły<br /><a href="mailto:tkzsz@tlen.pl">tkzsz@tlen.pl</a><br />tel. +48 61/ 29 218 13').openPopup();
     }
 
@@ -215,33 +197,3 @@ jQuery(function($){
     }
 
 }); 
-
-
-// /**
-//  * inicjalizacja mapy
-//  * @param (string) - id kontenera mapy
-//  * @param (float) - pozycja: lat
-//  * @param (float) - pozycja: lng
-//  * @param (number) - zoom mapy
-//  */
-// function initMap(container, lat, lng, zoom) {
-//     var center = {lat: lat, lng: lng};
-
-//     var map = new google.maps.Map(document.getElementById(container), {
-//         zoom: zoom,
-//         center: center,
-//         styles: mapColors,
-//         zoomControlOptions: {
-//             position: google.maps.ControlPosition.RIGHT_CENTER
-//         },
-//         streetViewControlOptions: {
-//             position: google.maps.ControlPosition.RIGHT_CENTER
-//         },
-//     });
-
-//     var marker = new google.maps.Marker({
-//         position: center,
-//         map: map,
-//         icon: mapPin
-//     });
-// }

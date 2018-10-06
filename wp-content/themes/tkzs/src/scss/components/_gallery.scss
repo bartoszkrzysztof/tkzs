@@ -13,6 +13,12 @@
          width: 100%;
          padding-top: 100%;
       }
+
+      > a {
+         &:hover {
+            opacity: 1;
+         }
+      }
    }
 
    &__image {
@@ -24,11 +30,11 @@
       right: 0;
       bottom: 0;
       left: 0;
-      transition: transform .25s ease-out;
+      transition: transform .5s ease-out;
       cursor: pointer;
 
       &:hover {
-         transform: scale(1.2);
+         transform: scale(1.1);
       }
    }
 }

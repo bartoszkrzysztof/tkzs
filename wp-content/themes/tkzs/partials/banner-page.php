@@ -1,18 +1,50 @@
 <?php 
    if ( is_home() && ! is_front_page() ) {
       $acf_id = get_option( 'page_for_posts' );
-      $banner = get_field('page-banner', $acf_id);
-      $banner = $banner['url'];
+      $banner = get_field('page-banner', $acf_id);['url'];
    }
-   elseif (is_archive()) {
+   if (is_archive()) {
       $banner = get_archive_thumbnail_src('full');
    }
-   elseif (get_field('page-banner')) {
-      $banner = get_field('page-banner');
-      $banner = $banner['url'];
+
+   if (is_singular('galleries')) {
+      if (get_field('page-banner')) {
+         $banner = get_field('page-banner')['url'];
+      }
+      else {
+         $banner = get_archive_thumbnail_src('full', get_post_type());
+      }
    }
-   else {
-      $banner = get_template_directory_uri().'/dist/static/img/banner.jpg';
+
+   if (is_singular('post')) {
+      if (get_field('page-banner')) {
+         $banner = get_field('page-banner');
+         $banner = $banner['url'];
+      }
+      else {
+         $acf_id = get_option( 'page_for_posts' );
+         $banner = get_field('page-banner', $acf_id)['url'];
+      }
+   }
+
+   if (is_singular('initiatives')) {
+      if (get_field('page-banner')) {
+         $banner = get_field('page-banner')['url'];
+      }
+      else {
+         $term = get_the_terms($post->ID, 'location');
+         $banner = get_archive_thumbnail_src('full', 'location', $term[0]->term_id);
+      }
+   }
+
+   if(!$banner) {
+      if (get_field('page-banner')) {
+         $banner = get_field('page-banner');
+         $banner = $banner['url'];
+      }
+      else {
+         $banner = get_template_directory_uri().'/dist/static/img/banner.jpg';
+      }
    }
 ?>
 <div class="banner-page" style="background-image: url(<?php echo $banner; ?>);">

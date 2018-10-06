@@ -64,10 +64,22 @@
       overflow: hidden;
       margin: 0 auto 15px auto;
       background: $color-background-light;
+      position: relative;
 
       .icon-user {
          font-size: 40px;
          color: $color-accent-3;
       }
+   }
+
+   &__image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
    }
 }

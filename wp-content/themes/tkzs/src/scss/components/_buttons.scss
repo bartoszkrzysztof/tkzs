@@ -12,6 +12,7 @@
    transition: opacity .15s ease-out;
 
    @include icon(angel-right, after);
+
    &:after {
       font-size: 12px;
       vertical-align: -2px;
@@ -26,9 +27,9 @@
       opacity: .8;
       text-decoration: none;
 
-      &:after {
-         transform: translateX(5px);
-      }
+      // &:after {
+         // transform: translateX(5px);
+      // }
    }
 
    &--full {

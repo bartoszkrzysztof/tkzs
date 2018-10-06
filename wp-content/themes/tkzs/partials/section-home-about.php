@@ -16,7 +16,8 @@
             <div class="home-about">
                 <div class="row align-items-center justify-content-center">
                     <?php if (get_sub_field('photo')) : ?>
-                        <div class="col-24 col-md-12 home-about__photo home-about__div-col-start" style="background-image: url(<?php echo $thumb['url']; ?>);">
+                        <div class="col-24 col-md-12 home-about__photo home-about__div-col-start">
+                            <div class="home-about__photo-img" style="background-image: url(<?php echo $thumb['url']; ?>);"></div>
                         </div>
                         <div class="col-24 col-md-12 home-about__div-col-end">
                             <div class="half-container">

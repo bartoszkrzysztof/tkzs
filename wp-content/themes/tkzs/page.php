@@ -25,7 +25,7 @@
 <div class="container gallery">
     <div class="row">
         <div class="col-24">
-            <div class="page-content <?php echo get_field('columns'); ?>">
+            <div class="page-content">
                 <?php the_content(); ?>
             </div>
         </div>

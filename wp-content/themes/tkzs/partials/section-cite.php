@@ -12,7 +12,7 @@
                   
                   <p class="single-cite__author">
                      <?php if($cite['photo']) : ?>
-                        <div class="single-cite__photo" style="background: url(<?php echo $cite['photo']['url']; ?>)">
+                        <div class="single-cite__photo" style="background-image: url(<?php echo $cite['photo']['url']; ?>)">
 
                         </div>
                      <?php endif; ?>
