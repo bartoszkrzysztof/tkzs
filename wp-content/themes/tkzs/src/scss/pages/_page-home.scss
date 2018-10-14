@@ -1,6 +1,12 @@
+.banner-home {
+   position: relative;
+}
+
 .slider-home {
    // max-width: 1440px;
    // margin: 0 auto;
+   position: relative;
+   z-index: 1;
 
    &__slide {
       height: 650px;
@@ -54,7 +60,7 @@
       line-height: 1.2;
       position: absolute;
       z-index: 1;
-      bottom: 50px;
+      top: 50%;
       left: 50%;
       font-weight: 300;
       text-align: left;

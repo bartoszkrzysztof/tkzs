@@ -1037,9 +1037,67 @@ jQuery(function($){
         initmaphome();
     }
 
-    $('.img-holder').imageScroll({
-        coverRatio: 0.9,
-        mediaHeight: 'auto'
+    var borderHome = $('#sliderBorder');
+    var borderHomeItem = '.color-border__item';
+
+    borderHome.find(borderHomeItem).each(function() {
+        var translate = $(this).css('transform');
+        console.log(translate);
+    })
+
+
+
+    $(window).bind('scroll',function(e){
+        scrollBorder();
     });
+
+    
+    $(document).ready(function() {
+        scrollBorder();
+    });
+
+    function scrollBorder() {
+        var scrolled = $(window).scrollTop();
+        var scroll1 = -60 + (scrolled * .5);
+        var scroll2 = -70 + (scrolled * .6);
+        var scroll3 = -80 + (scrolled * .7);
+        var scroll4 = -90 + (scrolled * .8);
+        var scroll5 = -100 + (scrolled * .9);
+
+        if (scroll1 <= 0) {
+            $('.color-border__item--1').css('transform', 'matrix(1, 0, 0, 1, 0, ' + scroll1 +  ')');
+        }
+        else {
+            $('.color-border__item--1').css('transform', 'matrix(1, 0, 0, 1, 0, 0)');
+        }
+
+        if (scroll2 <= 0) {
+            $('.color-border__item--2').css('transform', 'matrix(1, 0, 0, 1, 0, ' + scroll2 +  ')');
+        }
+        else {
+            $('.color-border__item--2').css('transform', 'matrix(1, 0, 0, 1, 0, 0)');
+        }
+
+        if (scroll3 <= 0) {
+            $('.color-border__item--3').css('transform', 'matrix(1, 0, 0, 1, 0, ' + scroll3 +  ')');
+        }
+        else {
+            $('.color-border__item--3').css('transform', 'matrix(1, 0, 0, 1, 0, 0)');
+        }
+
+        if (scroll4 <= 0) {
+            $('.color-border__item--4').css('transform', 'matrix(1, 0, 0, 1, 0, ' + scroll4 +  ')');
+        }
+        else {
+            $('.color-border__item--4').css('transform', 'matrix(1, 0, 0, 1, 0, 0)');
+        }
+
+        if (scroll5 <= 0) {
+            $('.color-border__item--5').css('transform', 'matrix(1, 0, 0, 1, 0, ' + scroll5 +  ')');
+        }
+        else {
+            $('.color-border__item--5').css('transform', 'matrix(1, 0, 0, 1, 0, 0)');
+        }
+    }
 }); 
 //# sourceMappingURL=bundle.js.map
