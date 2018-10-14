@@ -93,6 +93,22 @@ jQuery(function($){
     /** 
      * slider 
      */
+    var homeSlider = $('#sliderHome');
+    // var logoItem = $('.slider-logo');
+
+    //slick init
+    homeSlider.slick({
+        arrows: false,
+        autoplay: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        pauseOnFocus: false
+    });
+
+    /** 
+     * slider 
+     */
     var eventsSlider = $('#eventsSlider');
     // var logoItem = $('.slider-logo');
 
@@ -165,6 +181,12 @@ jQuery(function($){
         map.setView(new L.LatLng(52.61551, 16.57792),17);
         map.addLayer(osm);
 
+        if ($(window).width() < 1025) {
+            map.scrollWheelZoom.disable();
+            map.touchZoom.disable();
+            map.dragging.disable();
+        }
+
         var marker = L.marker([52.61551, 16.57792]).addTo(map);
     }
 
@@ -181,10 +203,20 @@ jQuery(function($){
 
         var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
         var osmAttrib='Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
-        var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 24, attribution: osmAttrib});		
+        var osm = new L.TileLayer(osmUrl, {
+            minZoom: 8, 
+            maxZoom: 24, 
+            attribution: osmAttrib,
+        });		
 
         homeMap.setView(new L.LatLng(52.61551, 16.57792),17);
         homeMap.addLayer(osm);
+
+        if ($(window).width() < 1025) {
+            homeMap.scrollWheelZoom.disable();
+            homeMap.touchZoom.disable();
+            homeMap.dragging.disable();
+        }
 
         var marker = L.marker([52.61551, 16.57792]).addTo(homeMap);
         marker.bindPopup('<span class="popup-title">Towarzystwo Kultury Ziemi Szamotulskiej</span><br />ul. Wroniecka 30, 64-500 Szamotuły<br /><a href="mailto:tkzsz@tlen.pl">tkzsz@tlen.pl</a><br />tel. +48 61/ 29 218 13').openPopup();
@@ -196,4 +228,8 @@ jQuery(function($){
         initmaphome();
     }
 
+    $('.img-holder').imageScroll({
+        coverRatio: 0.9,
+        mediaHeight: 'auto'
+    });
 }); 

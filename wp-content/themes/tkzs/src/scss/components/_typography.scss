@@ -11,10 +11,27 @@
 
    &--main {
       font-size: 52px;
+      
+      @include media-breakpoint-down(tb) {
+         font-size: 46px;
+      }
+
+      @include media-breakpoint-down(md) {
+         font-size: 40px;
+      }
+
+      @include media-breakpoint-down(sm) {
+         font-size: 32px;
+      }
    }
 
    &--card {
       font-size: 32px;
+
+      @include media-breakpoint-down(sm) {
+         font-size: 24px;
+         height: auto!important;
+      }
 
       &-small {
          font-size: 20px;
@@ -29,6 +46,10 @@
    line-height: 1.563;
    margin: 0;
    padding: 0;
+   
+   @include media-breakpoint-down(sm) {
+      font-size: 14px;
+   }
 
    &--300 {font-weight: 300;}
    &--400 {font-weight: 400;}
@@ -56,5 +77,9 @@
 
    &--bigger {
       font-size: 20px;
+
+      @include media-breakpoint-down(sm) {
+         font-size: 16px;
+      }
    }
 }

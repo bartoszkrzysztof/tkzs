@@ -5,6 +5,10 @@
    background-size: cover;
    background-repeat: no-repeat;
 
+   @include media-breakpoint-down(sm) {
+      height: 200px;
+   }
+
    &__overlay {
       position: absolute;
       top: 0;
@@ -25,5 +29,19 @@
       font-weight: 300;
       
       transform: translate(-50%, -50%);
+
+      @include media-breakpoint-down(tb) {
+         font-size: 42px;
+      }
+      
+      @include media-breakpoint-down(sm) {
+         font-size: 32px;
+      }
+   }
+}
+
+.parallax-window {
+   @include media-breakpoint-up(tb) {
+      background-image: none!important;
    }
 }

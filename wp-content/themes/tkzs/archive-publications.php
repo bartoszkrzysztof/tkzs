@@ -12,7 +12,7 @@ get_header(); ?>
   <div class="container news">
     <div class="row">
       <?php while ( have_posts() ) : the_post(); ?>
-        <div class="col-12">
+        <div class="col-24 col-md-12">
           <?php echo get_template_part('partials/card', 'publication'); ?>
         </div>
       <?php endwhile; ?>

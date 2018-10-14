@@ -1,5 +1,10 @@
 <?php
    $thumb = get_the_post_thumbnail_url();
+   
+   if (!$thumb) {
+      $term = get_the_terms($post->ID, 'location');
+      $thumb = get_archive_thumbnail_src('full', null, $term[0]->term_id);
+   }
 ?>
 <div class="card">
    <a href="<?php the_permalink(); ?>">

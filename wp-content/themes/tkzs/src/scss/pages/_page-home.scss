@@ -3,12 +3,28 @@
    // margin: 0 auto;
 
    &__slide {
-      height: 700px;
+      height: 650px;
       text-align: center;
       overflow-x: hidden;
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+
+      @include media-breakpoint-down(xl) {
+         height: 550px;
+      }
+
+      @include media-breakpoint-down(tb) {
+         height: 450px;
+      }
+
+      @include media-breakpoint-down(md) {
+         height: 400px;
+      }
+
+      @include media-breakpoint-down(sm) {
+         height: 300px;
+      }
 
       img {
          margin: 0 auto;
@@ -16,11 +32,55 @@
          height: auto;
       }
    }
+
+   
+
+   &__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(#000, .5);
+      background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.75) 100%); 
+      background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,0.75) 100%);
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,0.75) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#80000000',GradientType=0 );
+   }
+
+   &__title {
+      color: #FFF;
+      font-size: 52px;
+      line-height: 1.2;
+      position: absolute;
+      z-index: 1;
+      bottom: 50px;
+      left: 50%;
+      font-weight: 300;
+      text-align: left;
+      transform: translate(-50%, 0);
+
+      @include media-breakpoint-down(tb) {
+         font-size: 42px;
+      }
+      
+      @include media-breakpoint-down(sm) {
+         font-size: 32px;
+      }
+   }
 }
 
 .home-grid {
    $root: &;
    margin-top: 80px;
+   
+   @include media-breakpoint-down(tb) {
+      margin-top: 40px;
+   }
+
+   @include media-breakpoint-down(sm) {
+      margin-top: 30px;
+   }
 
    &__row {
       @include media-breakpoint-down(xl) {
@@ -156,6 +216,10 @@
    }
    &__link {
       font-size: 16px;
+
+      @include media-breakpoint-down(sm) {
+         font-size: 14px;
+      }
 
       &:after {
          vertical-align: 0;
@@ -306,6 +370,10 @@
 .contact-form {
    text-align: left;
    color: $color-font-text;
+
+   @include media-breakpoint-down(sm) {
+      margin-bottom: 40px;
+   }
 }
 
 .home-about-map {
@@ -313,5 +381,16 @@
 
    .half-container--clear {
       padding-left: 40px;
+
+      @include media-breakpoint-down(tb) {
+         padding-left: 40px;
+         padding-right: 40px;
+      }
+
+      @include media-breakpoint-down(sm) {
+         padding-top: 30px;
+         padding-left: 20px;
+         padding-right: 20px;
+      }
    }
 }

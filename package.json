@@ -39,6 +39,8 @@
     "gulp-revise": "^2.0.0",
     "jquery": "^3.3.1",
     "jquery-match-height": "^0.7.2",
+    "jquery-parallax.js": "^1.5.0",
+    "parallax-imagescroll": "^0.2.3",
     "path": "^0.12.7",
     "popper.js": "^1.14.3",
     "slick-carousel": "^1.8.1"

@@ -10,6 +10,10 @@
       background: $color-accent-1;
       float: left;
 
+      @include media-breakpoint-down(sm) {
+         width: 25%;
+      }
+
       &:nth-child(1n+1) {
          background: $color-accent-1;
       }
@@ -25,6 +29,12 @@
       &:nth-child(4n+4) {
          background: $color-accent-4;
       }
+
+      &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8) {
+         @include media-breakpoint-down(sm) {
+            display: none;
+         }
+      }
    }
 }
 
@@ -38,9 +48,20 @@
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
+      background-color: $color-background-light;
+
+      @include media-breakpoint-down(sm) {
+         height: 200px;
+      }
 
       &--poster {
          height: 490px;
+
+         @include media-breakpoint-down(sm) {
+            height: 400px;
+            background-size: contain;
+            background-color: $color-background-light;
+         }
       }
    }
 
@@ -75,6 +96,10 @@
    }
    &-date {
       margin-bottom: 5px;
+
+      @include media-breakpoint-down(sm) {
+         font-size: 13px;
+      }
    }
 
    &--gallery {
@@ -99,6 +124,14 @@
 
 .section {
    padding: 100px 0;
+   
+   @include media-breakpoint-down(tb) {
+      padding: 50px 0;
+   }
+
+   @include media-breakpoint-down(sm) {
+      padding: 40px 0;
+   }
 
    &--background {
       background: $color-background-light;
@@ -106,6 +139,14 @@
 
    &__headline {
       margin-bottom: 60px;
+   
+      @include media-breakpoint-down(tb) {
+         margin-bottom: 40px;
+      }
+   
+      @include media-breakpoint-down(sm) {
+         margin-bottom: 20px;
+      }
    }
 }
 

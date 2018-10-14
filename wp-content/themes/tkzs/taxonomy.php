@@ -23,7 +23,7 @@ get_header(); ?>
   <div class="container gallery">
     <div class="row">
       <?php while ( have_posts() ) : the_post(); ?>
-        <div class="col-8">
+        <div class="col-24 col-md-12 col-tb-8">
           <?php echo get_template_part('partials/card', 'initiative'); ?>
         </div>
       <?php endwhile; ?>

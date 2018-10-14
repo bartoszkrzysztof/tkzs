@@ -1,6 +1,22 @@
 .single-header, .single-content {
    padding-top: 100px;
    padding-bottom: 100px;
+
+   @include media-breakpoint-down(md) {
+      padding-top: 60px;
+      padding-bottom: 60px;
+   }
+
+   @include media-breakpoint-down(sm) {
+      padding-top: 40px;
+      padding-bottom: 20px;
+   }
+}
+
+.single-content {
+   @include media-breakpoint-down(sm) {
+      padding-top: 0;
+   }
 }
 
 .single-header {
@@ -9,6 +25,15 @@
       font-weight: 300;
       line-height: 1.12;
       padding-bottom: 75px;
+
+      @include media-breakpoint-down(md) {
+         padding-bottom: 50px;
+         font-size: 36px;
+      }
+
+      @include media-breakpoint-down(sm) {
+         padding-bottom: 20px;
+      }
 
       &--small {
          font-size: 32px;
@@ -28,6 +53,11 @@
          font-weight: 400;
          font-size: 20px;
          margin-bottom: 30px;
+
+         @include media-breakpoint-down(sm) {
+            font-size: 16px;
+            margin-bottom: 20px;
+         }
       }
    }
 }
@@ -36,6 +66,10 @@
    font-size: 20px;
    line-height: 1.5;
    color: $color-font-text-80;
+
+   @include media-breakpoint-down(sm) {
+      font-size: 16px;
+   }
 
    &--excerpt {
       color: $color-font-80;
@@ -46,6 +80,10 @@
    position: relative;
    color: $color-font-text-80;
    line-height: 1.56;
+
+   @include media-breakpoint-down(sm) {
+      font-size: 14px;
+   }
 
    ul, ol {
       list-style: none;
@@ -74,6 +112,10 @@
             border-radius: 100%;
             margin-right: 22px;
             vertical-align: middle;
+
+            @include media-breakpoint-down(sm) {
+            margin-right: 26px;
+            }
          }
          
          &:nth-child(1n+1) {
@@ -177,15 +219,29 @@
 
 
 .columns-2 {
-   p, ul, ol {
+   p {
       columns: 2;
       column-gap: 50px;
+
+      @include media-breakpoint-down(md) {
+         columns: 1;
+      }
    }
 }
 
 .single-cite {
    background: $color-background-light;
    padding: 100px 0;
+
+   @include media-breakpoint-down(md) {
+      padding-top: 60px;
+      padding-bottom: 60px;
+   }
+
+   @include media-breakpoint-down(sm) {
+      padding-top: 40px;
+      padding-bottom: 40px;
+   }
 
    &__photo {
       width: 85px;
@@ -206,11 +262,25 @@
       border-radius: 5px;
       box-shadow: 0 3px 20px 0 rgba(0,0,0,0.1);
 
+      @include media-breakpoint-down(md) {
+         padding: 40px;
+         font-size: 18px;
+      }
+   
+      @include media-breakpoint-down(sm) {
+         padding: 30px;
+         font-size: 16px;
+      }
+
       blockquote {
          font-size: 16px;
          font-style: italic;
          color: $color-font-text-80;
          padding: 20px 0;
+   
+         @include media-breakpoint-down(sm) {
+            font-size: 14px;
+         }
       }
    }
 }
@@ -235,4 +305,10 @@
 .contact-map {
    height: 380px;
    margin-bottom: 40px;
+}
+
+.contact-form-page {
+   @include media-breakpoint-down(sm) {
+      margin-bottom: 30px;
+   }
 }

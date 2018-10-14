@@ -21,7 +21,7 @@ get_header(); ?>
          <?php
             $thumb = get_archive_thumbnail_src('large', null, $cat->term_id);
          ?>
-        <div class="col-8">
+        <div class="col-24 col-md-12 col-tb-8">
             <div class="card">
                <a href="<?php echo get_category_link( $cat->term_id); ?>">
                   <div class="card-image" style="background-image: url(<?php echo $thumb; ?>);"></div>

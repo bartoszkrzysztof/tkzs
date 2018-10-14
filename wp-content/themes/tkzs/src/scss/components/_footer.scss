@@ -16,6 +16,11 @@
    &__item {
       display: inline-block;
       margin: 0 20px;
+
+      @include media-breakpoint-down(md) {
+         display: block;
+         padding: 5px 0;
+      }
    }
 
    &__link {
@@ -35,6 +40,11 @@
 
    p {
       margin: 0;
+
+      @include media-breakpoint-down(sm) {
+         width: 80%;
+         margin: 0 10% 10px 10%;
+      }
    }
 }
 
@@ -45,4 +55,9 @@
    color: #FFF;
    font-size: 24px;
    opacity: 0.4;
+
+   @include media-breakpoint-down(md) {
+      position: relative;
+      top: auto;
+   }
 }

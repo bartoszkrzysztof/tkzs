@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
     <?php wp_head()?>
     
-    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/dist/static/img/favicon.ico?v=1.3" type="image/x-icon">
-    <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/dist/static/img/favicon.ico?v=1.3" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/dist/static/img/favicon.ico?v=1" type="image/x-icon">
+    <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/dist/static/img/favicon.ico?v=1" type="image/x-icon">
     <script>
         var basePath = "<?php echo get_template_directory_uri(); ?>";
     </script>
@@ -23,8 +23,13 @@
                     Ziemi Szamotulskiej
             </div>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            menu
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="burger-icon" id="burgerIcon">
+                <div class="burger-icon__bar"></div>
+                <div class="burger-icon__bar"></div>
+                <div class="burger-icon__bar"></div>
+                <div class="burger-icon__bar"></div>
+            </div>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="ml-auto mr-0 mr-xl-3 mr-ds-5 mr-xxl-6">

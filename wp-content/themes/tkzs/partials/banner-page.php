@@ -1,7 +1,7 @@
 <?php 
    if ( is_home() && ! is_front_page() ) {
       $acf_id = get_option( 'page_for_posts' );
-      $banner = get_field('page-banner', $acf_id);['url'];
+      $banner = get_field('page-banner', $acf_id)['url'];
    }
    if (is_archive()) {
       $banner = get_archive_thumbnail_src('full');
@@ -33,7 +33,7 @@
       }
       else {
          $term = get_the_terms($post->ID, 'location');
-         $banner = get_archive_thumbnail_src('full', 'location', $term[0]->term_id);
+         $banner = get_archive_thumbnail_src('full', null, $term[0]->term_id);
       }
    }
 
@@ -47,7 +47,7 @@
       }
    }
 ?>
-<div class="banner-page" style="background-image: url(<?php echo $banner; ?>);">
+<div class="banner-page parallax-window" data-parallax="scroll" data-image-src="<?php echo $banner; ?>" style="background-image: url(<?php echo $banner; ?>);">
    <div class="banner-page__overlay"></div>
    <div class="banner-page__title container text-center">
       <div class="container">

@@ -49,5 +49,100 @@
          font-size: 15px;
          margin-left: 2.2em;
       }
+
+      @include media-breakpoint-down(tb) {
+         display: block;
+         text-align: center;
+         padding: 10px 0;
+         font-size: 16px;
+         margin-left: 0;
+      }
+   }
+}
+
+
+
+.burger-icon {
+   width: 40px;
+   height: 40px;
+   position: absolute;
+   transform: rotate(0deg);
+   // transition: all .25s ease-in-out;
+   cursor: pointer; 
+   display: inline-block;
+   top: 0;
+   left: 0;
+   
+   &__bar {
+      display: block;
+      position: absolute;
+      height: 5px;
+      width: 100%;
+      background: $color-accent-3;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: all .15s ease-in-out;
+      top: 0;
+   }
+}
+
+.navbar-toggler {
+   padding: 0;
+   margin: 8px 0 0 0;
+   margin: 0;
+   border: 0;
+   width: 40px;
+   height: 40px;
+   line-height: 1;
+   position: relative;
+   display: block;
+
+   &:not(.collapsed) {
+      .burger-icon {
+
+         &__bar {
+            &:nth-child(1) {
+               top: 10px;
+               width: 0%;
+               left: 50%;
+            }
+            &:nth-child(2) {
+               transform: rotate(45deg);
+               top: 15px;
+            }
+            &:nth-child(3) {
+               transform: rotate(-45deg);
+               top: 15px;
+            }
+            &:nth-child(4) {
+               top: 10px;
+               width: 0%;
+               left: 50%;
+            }
+         }
+      }
+   }
+
+   &.collapsed {
+      .burger-icon {
+         &__bar {
+            &:nth-child(1) {
+               top: 0;
+            }
+            
+            &:nth-child(2), &:nth-child(3) {
+               top: 13px;        
+            }
+            
+            &:nth-child(4) {
+               top: 26px; 
+            }
+         }
+      }
+   }
+
+   &:focus {
+      outline: none;
    }
 }

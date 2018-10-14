@@ -1,5 +1,16 @@
 <?php
    $thumb = get_the_post_thumbnail_url();
+   $post_type = get_post_type();
+
+   if (!$thumb) {
+      if ($post_type == 'post') {
+         $acf_id = get_option( 'page_for_posts' );
+         $thumb = get_field('page-banner', $acf_id)['url'];
+      }
+      else {
+         $thumb = get_archive_thumbnail_src('full', $post_type);
+      }
+   }
 ?>
 <div class="card">
    <a href="<?php the_permalink(); ?>">

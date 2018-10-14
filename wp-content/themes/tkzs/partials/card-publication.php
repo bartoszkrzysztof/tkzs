@@ -3,12 +3,12 @@
 ?>
 <div class="publication">
    <div class="row">
-      <div class="col-10 publication__image-container">
+      <div class="col-24 col-md-10 publication__image-container">
          <a href="<?php echo $thumb; ?>" data-toggle="lightbox">
             <img src="<?php echo $thumb; ?>" alt="<?php the_title(); ?>" class="publication__image">
          </a>
       </div>
-      <div class="col-14">
+      <div class="col-24 col-md-14">
          <h3 class="headline publication__headline">
             <?php the_title(); ?>
          </h3>

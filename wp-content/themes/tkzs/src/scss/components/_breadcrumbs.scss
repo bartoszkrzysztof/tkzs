@@ -4,4 +4,9 @@
    font-size: 14px;
    font-weight: 500;
    color: $color-font-text-50;
+
+   @include media-breakpoint-down(sm) {
+      font-size: 12px;
+      padding: 15px 0;
+   }
 }
