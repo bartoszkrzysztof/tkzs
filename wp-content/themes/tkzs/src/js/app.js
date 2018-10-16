@@ -249,11 +249,11 @@ jQuery(function($){
 
     function scrollBorder() {
         var scrolled = $(window).scrollTop();
-        var scroll1 = -60 + (scrolled * .5);
-        var scroll2 = -70 + (scrolled * .6);
-        var scroll3 = -80 + (scrolled * .7);
-        var scroll4 = -90 + (scrolled * .8);
-        var scroll5 = -100 + (scrolled * .9);
+        var scroll1 = -100 + (scrolled * .3);
+        var scroll2 = -110 + (scrolled * .2);
+        var scroll3 = -120 + (scrolled * .3);
+        var scroll4 = -130 + (scrolled * .2); 
+        var scroll5 = -140 + (scrolled * .3);
 
         if (scroll1 <= 0) {
             $('.color-border__item--1').css('transform', 'matrix(1, 0, 0, 1, 0, ' + scroll1 +  ')');
