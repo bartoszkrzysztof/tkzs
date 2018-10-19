@@ -10,14 +10,14 @@
    &--700 {font-weight: 700;}
 
    &--main {
-      font-size: 52px;
+      font-size: 48px;
       
       @include media-breakpoint-down(tb) {
-         font-size: 46px;
+         font-size: 42px;
       }
 
       @include media-breakpoint-down(md) {
-         font-size: 40px;
+         font-size: 38px;
       }
 
       @include media-breakpoint-down(sm) {
@@ -26,10 +26,10 @@
    }
 
    &--card {
-      font-size: 32px;
+      font-size: 30px;
 
       @include media-breakpoint-down(sm) {
-         font-size: 24px;
+         font-size: 22px;
          height: auto!important;
       }
 
